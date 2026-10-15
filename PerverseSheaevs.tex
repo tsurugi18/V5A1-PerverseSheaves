@@ -1,0 +1,392 @@
+\documentclass[8pt]{article}
+\linespread{0.5} 
+\usepackage{extsizes}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{ mathrsfs }
+\usepackage{ mathtools}
+\usepackage{enumerate}
+\usepackage{bbm}
+\usepackage{lipsum}
+\usepackage{fancyhdr}
+\usepackage{tikz-cd} 
+\usepackage{adjustbox} 
+\usepackage{ stmaryrd }
+\numberwithin{equation}{section}
+\usetikzlibrary{arrows}
+\newcommand{\midarrow}{\tikz \draw[-triangle 90] (0,0) -- +(.1,0);}
+\tikzset{commutative diagrams/.cd,
+mysymbol/.style={start anchor=center,end anchor=center,draw=none}
+}
+\newcommand\comsymb[2][\circlearrowleft]{%
+  \arrow[mysymbol]{#2}[description]{#1}}
+
+\newtheorem{theorem}{Theorem} [subsection] 
+\newtheorem{proposition}{Proposition}[subsection] 
+\newtheorem{definition}{Definition}[subsection] 
+\newtheorem{lemma}{Lemma}[subsection] 
+\newtheorem{notation}{Notation}[subsection] 
+\newtheorem{remark}{Remark}[subsection] 
+\newtheorem{corollary}{Corollary} [subsection] 
+\newtheorem{terminology}{Terminology}[subsection] 
+\newtheorem{fact}{Fact}[subsection] 
+\newtheorem{example}{Example}[subsection] 
+\newtheorem{claim}{Claim}
+\newenvironment{claimproof}[1]{\par\noindent\underline{Proof:}\space#1}{\hfill $\blacksquare$}
+
+\DeclareMathOperator{\tmod}{mod}
+\DeclareMathOperator{\triv}{triv}
+\DeclareMathOperator{\ind}{ind}
+\DeclareMathOperator{\straw}{s.t.}
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Map}{Map}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\esssup}{esssup}
+\DeclareMathOperator{\abs}{abs}
+\DeclareMathOperator{\rel}{rel}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Homk}{Hom_{k-alg}}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Image}{Im}
+\DeclareMathOperator{\Dom}{Dom}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\divergence}{div}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\mSpec}{mSpec}
+\DeclareMathOperator{\MaxSpec}{MaxSpec}
+\DeclareMathOperator{\interior}{int}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\PD}{PD}
+\DeclareMathOperator{\ext}{ext}
+\DeclareMathOperator{\vol}{vol}
+\DeclareMathOperator{\inte}{int}
+\DeclareMathOperator{\diverg}{div}
+\DeclareMathOperator{\curl}{curl}
+\DeclareMathOperator{\image}{im}
+\DeclareMathOperator{\dR}{dR}
+\DeclareMathOperator{\Ob}{Ob}
+\DeclareMathOperator{\Mnfd}{Mnfd}
+\DeclareMathOperator{\OpEmb}{OpEmb}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Spa}{Spa}
+\DeclareMathOperator{\Lim}{Lim}
+\DeclareMathOperator{\Alg}{\mathcal{A}}
+\DeclareMathOperator{\glim}{glim}
+\DeclareMathOperator{\con}{con}
+\DeclareMathOperator{\Spv}{Spv}
+\DeclareMathOperator{\clet}{c}
+\DeclareMathOperator{\tat}{at}
+\DeclareMathOperator{\Sheaf}{Sheaf}
+\DeclareMathOperator{\Cont}{Cont}
+%\newcommand*{\name}[\num_arguments][default values]{{\color{#1}\Large #2}}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\Ouv}{\mathscr{O}}
+\newcommand{\norm}[1]{\Vert #1 \Vert}
+\newcommand{\opNorm}[2]{\norm{#1}_{#2\to#2}}
+\newcommand{\normL}[3]{\norm{#1}_{L^{#2}(#3)}}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\m}[0]{\mathfrak{m}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\Z}[0]{\mathbb{Z}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\Q}[0]{\mathbb{Q}}
+\newcommand{\F}[0]{\mathcal{F}}
+\newcommand{\U}[0]{\mathcal{U}}
+\newcommand{\B}[0]{\mathcal{B}}
+\newcommand{\G}[0]{\mathbb{G}}
+\newcommand{\bA}[0]{\mathbb{A}}
+\newcommand{\bT}[0]{\mathbb{T}}
+\newcommand{\cK}[0]{\mathcal{K}}
+\newcommand{\cH}[0]{\mathcal{H}}
+\newcommand{\Para}[0]{\mathbb{P}}
+\newcommand{\M}[0]{\mathcal{M}}
+\newcommand{\maniN}[0]{\mathcal{N}}
+\newcommand{\cinf}[0]{\mathcal{C}^\infty}
+\newcommand{\torus}[0]{\mathbb{T}}
+\newcommand{\cR}[0]{\mathcal{R}}
+\newcommand{\sep}[0]{\:|\:}
+\newcommand{\pd}[2]{{\frac {\partial #1} {\partial #2}}}
+\newcommand{\compinc}[0]{\subset \subset}
+\newcommand{\sH}[0]{\mathscr{H}}
+\newcommand{\Nfil}[0]{\mathcal{N}}
+\newcommand{\g}[0]{\mathfrak{g}}
+\newcommand{\p}[0]{\mathfrak{p}}
+\newcommand{\QC}[0]{\mathfrak{Q}_C}
+\newcommand{\ab}[1]{\vert #1 \vert}
+\newcommand{\st}[0]{\:\straw\:}
+\newcommand{\cGamma}[0]{c\Gamma}
+\newcommand{\sC}[0]{\mathscr{C}}
+\newcommand{\sU}[0]{\mathscr{U}}
+\newcommand{\cV}[0]{\mathcal{V}}
+\newcommand{\sA}[0]{\mathscr{A}}
+\newcommand{\sB}[0]{\mathscr{B}}
+\newcommand{\sX}[0]{\mathscr{X}}
+\newcommand{\sS}[0]{\mathscr{S}}
+\newcommand{\sT}[0]{\mathscr{T}}
+\newcommand{\cB}[0]{\mathcal{B}}
+\newcommand{\cA}[0]{\mathcal{A}}
+\newcommand{\cC}[0]{\mathcal{C}}
+\newcommand{\cO}[0]{\mathcal{O}}
+\newcommand{\cT}[0]{\mathcal{T}}
+\newcommand{\cF}[0]{\mathcal{F}}
+\newcommand{\cG}[0]{\mathcal{G}}
+\newcommand{\nat}[0]{\mathrm{nat}}
+\newcommand{\tand}[0]{\text{ and }}
+\newcommand{\tor}[0]{\text{ or }}
+\newcommand{\dcirc}[0]{{\circ\circ}}
+\newcommand{\otherwise}[0]{\text{ otherwise }}
+\newcommand{\Rat}[0]{\mathfrak{Rat}}
+\newcommand{\polring}[1]{[X_1,\cdots,X_{#1}]}
+\newcommand{\compring}[1]{\langle X_1,\cdots,X_{#1}\rangle}
+\newcommand{\IH}[0]{\mathrm{IH}}
+\newcommand{\IC}[0]{\mathrm{IC}}
+\newcommand{\PreShv}[0]{\mathrm{PreShv}}
+\newcommand{\Shv}[0]{\mathrm{Shv}}
+\newcommand{\Perv}[0]{\mathrm{Perv}}
+\newcommand{\fib}[1]{%
+  \mathbin{\mathop{\times}\limits_{#1}}%
+}
+\newcommand{\tens}[1]{%
+  \mathbin{\mathop{\otimes}\displaylimits_{#1}}%
+}
+\newcommand{\comppol}[1]{\langle X_1,\cdots, X_{#1}\rangle}
+
+\title{Perverse Sheaves}
+\author{Based on Lectures given by\\\\Prof. Dr. Jens Franke}
+\date{SoSe 26, University of Bonn}
+
+
+\begin{document}
+\maketitle
+\section{Introduction}
+\subsection{Overview of the Course}
+%10/12
+$X$ a smooth complex projective algebraic variety of dimension $\dim_\C X= d$. Then there is an isomorphism $H^i(X,\Q)\to H^{2d-i}(X,\Q)$ given by multiplication with some $l\in H^2(X,\Q)$. 
+\begin{center}
+    \begin{tikzcd}
+{H^i(X,\Q)} \arrow[r, "l"] \arrow[rrr, "\sim", bend right] & {H^{i+2}(X,\Q)} \arrow[r, "l"] & \cdots \arrow[r, "l"] & {H^{2d-i}(X,\Q)}
+\end{tikzcd}
+\end{center}
+We then get $b_i\leq b_{i+2}$ if $i<d$ and $b_i\geq b_{i+2}$ if $i>d$.
+\begin{align*}
+    b_0\leq b_2\leq\cdots\leq &b_{\mathrm{middle}}\geq\cdots\geq b_{2d},\\
+    b_1\leq b_3\leq\cdots\leq b_{\mathrm{middle}'}\geq\cdots\geq b_{2d-1}.
+\end{align*}
+\begin{definition}
+    Let $X$ be a complex projective variety. Then we define,
+    \begin{equation*}
+        H^{ij}(X)\defeq H^i(X,\Omega^j_X).
+    \end{equation*}
+\end{definition}
+\begin{theorem}
+    \begin{equation*}
+        H^k(X,\C)= \bigoplus_{i+j=k} H^{i,j}(X), \: H^{i,j}\cong \overline{H^{j,i}(X)}.
+    \end{equation*}
+    Furthermore, 
+    \begin{equation*}
+        b_k = \sum_{i+k}b_{i,j}, b_{i,j} = b_{j,i}.
+    \end{equation*}
+\end{theorem}
+\begin{corollary}
+    if $k$ is odd then $b_k$ is even.
+\end{corollary}
+\begin{theorem}[Deligne]
+    Let $f:X\to Y$ be a smooth morphism between smooth projective complex varieties. Then we have,
+    \begin{equation*}
+        Rf_*\underline{\Q}_X \cong \bigoplus_{i\in\Z}\mathcal{H}^i(Rf_*\underline{\Q}_X)[-i],
+    \end{equation*}
+    where $\underline{\Q}_X$ denotes the constant $\Q$-sheaf on $X$.
+    \label{theorem_1_1}.
+\end{theorem}
+\begin{remark}
+    Consider,
+    \begin{equation*}
+        S^1\to S^3\stackrel{f \text{Hopf}}{\to} S^2
+    \end{equation*}
+    Then $Rf_*\underline{\Q}_{S^3}$. However, $\mathcal{H}^0(Rf_*\underline{\Q}_{S^3}) = \underline{\Q}_{S^2}$ and $\mathcal{H}^1(Rf_*\underline{\Q}_{S^3}) = \Q_{S^2}$. Therefore,
+    \begin{equation*}
+        Rf_*\underline{\Q}_{S^3}\not\cong \underline{\Q}_{S^2}\oplus\underline{\Q}_{S^2}[-1], H^*(S^3)\not\cong H^*(S^2)\oplus H^{*-1}(S^2).
+    \end{equation*}
+    Hence $f$ does not satisfy Theorem \ref{theorem_1_1}
+\end{remark}
+
+The starting point of the theory was that over which spaces, do we have poincare duality. This question led to the invention of intersection cohomologies.
+\begin{definition}[Intersection Cohomology]
+    For a variety $X$ over $\C$, 
+\end{definition}
+
+There is a perverse sheaf $\IC_X\in D^b_c(X)$ in the derived category of constructible sheaves on $X$ such that 
+\begin{equation*}
+    \IH^*(X,\Q) = H^*(X,\IC_X)
+\end{equation*}
+which is the cohomology of this complex of sheaves.
+Perverse sheaves, Belinson-Bernstein-Deligne 1983, BBD + Gaber also extended Deligne's theorem to $f:X\to Y$ proper.
+
+\section{Recollection of Preliminaries}
+
+Let $X$ be a topological space and $k$ be a commutative ring. The category of presheaves of $k$-modules over $X$ is denoted by $\PreShv(X;k)$, similarly the sheaves of $k$-modules over $X$ is denoted by $\Shv(X;k)$.
+
+\begin{example}$\:$
+    \begin{enumerate}
+        \item For all $M\in\mathrm{Mod}(k)$, there is a constant sheaf $\underline{M}_X\in\Shv(X;k)$.
+        \item For $r>0$, consider morphisms of groups,
+        \begin{equation*}
+            p:\pi_1(X,x_0)\to \Aut(k^{\oplus r}).
+        \end{equation*}
+        Define $L_p4$ as follows. 
+    \end{enumerate}
+\end{example}
+
+\begin{example}
+    For $r>0$, consider morphisms of groups,
+        \begin{equation*}
+            p:\pi_1(X,x_0)\to \Aut(k^{\oplus r}).
+        \end{equation*}
+        Define $L_p4$ as follows. Let $\pi:\tilde{X}\to X$ be the universal covering space. For $U\subseteq X$, 
+        \begin{equation*}
+            L_p \defeq \{\pi^{-1}(U)\to k\sep \forall g\in\pi_1(X,x_0), f(x\cdot g) = p(g)^{-1}f(x)\}.
+        \end{equation*}
+        This is called a local sysmte $L_p$ (locally trivial).
+\end{example}
+\begin{theorem}
+    $\Shv(X;k)$ is an abelian category.
+\end{theorem}
+
+\begin{proposition}
+    The canonical inclusion $\Shv(X;k)\to \PreShv(X;k)$ admits a left adjoint and such functor is called the sheafification,
+    \begin{equation*}
+    \PreShv(X;k)\ni \cF\mapsto\cF^\dagger\in\Shv(X;k).
+    \end{equation*}
+    Explicitly, for $\cF\in\PreShv(X;k)$ and $\cG\in\Shv(X;k)$, we have 
+    \begin{equation*}
+        \mathrm{Mor}_{\PreShv}(\cF,\cG)\cong \mathrm{Mor}_{\Shv}(\cF^\dagger,\cG),
+    \end{equation*}
+    which is natural. In particular, setting $\cG = \cF^\dagger$, we obtain a natural map $\cF\to\cF^\dagger$ which is obtained from $\id\in\mathrm{Mor}_{\Shv}(\cF^\dagger,\cF^\dagger)$.
+\end{proposition}
+\begin{proposition}
+    The natural morphism $\cF\to \cF^\dagger$ induced isomorphisms on stalks.
+\end{proposition}
+
+\subsection{Derived Categories}
+\begin{definition}
+    The derived category on $\Shv(X;k)$ consists of 
+    \begin{enumerate}[i. ]
+        \item objects complex of sheaves,
+        \begin{equation*}
+            \cF^\bullet \defeq \cdots\to \cF^{i-1}\stackrel{d^{i-1}}{\to}\cF^i\stackrel{d^{i}}{\to}\cF^{i+1}\cdot
+        \end{equation*}
+        \item The cohomology of sheaves if $\cH(\cF^\bullet) \defeq\ker d^i\oplus\image d^{i-1}$.
+        \item Quasi-isomorphisms $\cF^\bullet\to\cG^\bullet$ is called a quasi-isomorphism if it induces isomorphism in cohomologies.
+    \end{enumerate}
+    The derived category = complex of sheaves / q-iso. This turns out to be a triangulated category.
+\end{definition}
+
+However the derived category turns out to be to large to handle. Therefore, we will use a smaller category called the bounded constructible derived category of sheaves denoted by $D_c^b(X;k)$.
+
+\begin{definition}
+    There exists a stratification in locally closed subspaces $X = \bigsqcup_\alpha S_\alpha$ such that $\cH^i(\cF^\bullet)|_{S_\alpha}$ is a finite rank local system and $\cH^i(\cF^\bullet) = 0$ for $\ab{i}\gg 0$.
+\end{definition}
+
+\par\textbf{Six-Functors}
+
+\begin{center}
+\begin{tabular}{l|l}
+Left Adjoints         & Right Adjoints              \\ \hline
+$Rf_*$ pushforward    & $f^*$ pullback              \\ \hline
+$f_!$                 & $f^!$                       \\ \hline
+$(\cdot\otimes\cdot)$ & $\mathrm{Hom}(\cdot,\cdot)$
+\end{tabular}
+\end{center}
+
+\begin{remark}
+    If $f$ is proper then $Rf_* = f_!$, if $f$ is open immersion then $f^* = f^!$.
+\end{remark}
+
+%10/13
+
+Suppose $X=U\cup V$ and $W = U\cap V$, and there are natural transformations,
+\begin{equation*}
+    (\cdot)\to (j_V)_*(j_U)^*(\cdot).
+\end{equation*}
+
+In the category of sheaves $\Shv(X;k)\subseteq D_c^b(X;k)$.
+
+\begin{center}
+    \begin{tikzcd}
+\Shv(X;k) \arrow[r, hook]                   & D^b(\Shv(X;k))                   \\
+\Shv_c(X;k) \arrow[u, hook] \arrow[r, hook] & D^b_c(\Shv(X;k)) \arrow[u, hook]
+\end{tikzcd}
+\end{center}
+
+\begin{definition}
+    The Perverse sheves is $\Perv(X;k)\subseteq D_c^b(\Shv(X;k))$, where $X$ is fnite-type variety over a field.
+    \par Explicitly, for $D(\cdot)= \mathcal{H}om(\cdot,\omega_X)$, define $\cF\in D_c^b(X;k)$ is a perverse sheaf 
+    if for all $n\in\Z$, $\dim\supp\mathcal{H}(\cF)\leq i$ and $\dim\supp\cH(D(\cF))\leq i$.
+\end{definition}
+
+\begin{example}
+    Let $X$ be a smooth variety over $\C$ of dimension $\dim_\C X = d$, then,
+    \begin{equation*}
+        \omega_X = k_X[2d],
+    \end{equation*}
+    then $\underline{k}_X[d]$ is a perverse sheaf and $\mathbb{D}(\underline{k}_k[d]) = \underline{k}_X[d]$.
+    As,
+    \begin{equation*}
+        \cH(k_x[d]) = \begin{cases}
+            \underline{k}_X \quad (i=d),\\
+            0,(\otherwise).
+        \end{cases}
+    \end{equation*}
+    Hence 
+    \begin{equation*}
+        \dim\supp(\cH(\underline{k}_X[d]))=\begin{cases}
+            d,\quad(i=d),\\
+            -\infty,\quad(\otherwise).
+        \end{cases}
+    \end{equation*}
+    Similarly, if $L $is a local system on $X$, then $L[d]\in\Perv(X;k)$.
+\end{example}
+
+\begin{theorem}
+    $\Perv(X;k)$ is an Abelian category which is both Noetherian and Artinian.
+\end{theorem}
+
+Every perverse sheaf has a composition series with ?
+All simple objects are constructed as follows,
+
+\begin{equation*}
+    \underbrace{X}_{\text{smooth finite-type variety}}\hookleftarrow \underbrace{Z}_{\text{closed subvariety}}\hookleftarrow \underbrace{U}_{\text{open smooth}}.
+\end{equation*}
+
+Let $L$ be a local system on $V$, then we construct a perverse sheave,
+
+\begin{align*}
+    \IC_Z(L)\subseteq\Perv(X;k),
+\end{align*}
+
+If it is supported on $Z$ and 
+\begin{equation*}
+    \IC_Z(L)|_V = L[\dim V].
+\end{equation*}
+
+\begin{thebibliography}{9}
+\bibitem{Achar}
+Pramod Achar, Perverse Sheaves and Applications to Representation Theory.
+\bibitem{Cataldo}
+Mark de Cataldo, Luca Migliorini, The Decomposition Theorem and the topology of algebraic maps.
+\end{thebibliography}
+\end{document}
