@@ -22,17 +22,19 @@ mysymbol/.style={start anchor=center,end anchor=center,draw=none}
 \newcommand\comsymb[2][\circlearrowleft]{%
   \arrow[mysymbol]{#2}[description]{#1}}
 
-\newtheorem{theorem}{Theorem} [subsection] 
-\newtheorem{proposition}{Proposition}[subsection] 
-\newtheorem{definition}{Definition}[subsection] 
-\newtheorem{lemma}{Lemma}[subsection] 
-\newtheorem{notation}{Notation}[subsection] 
-\newtheorem{remark}{Remark}[subsection] 
-\newtheorem{corollary}{Corollary} [subsection] 
-\newtheorem{terminology}{Terminology}[subsection] 
-\newtheorem{fact}{Fact}[subsection] 
-\newtheorem{example}{Example}[subsection] 
+\newtheorem{theorem}{Theorem} [section] 
+\newtheorem{proposition}{Proposition}[section] 
+\newtheorem{definition}{Definition}[section] 
+\newtheorem{lemma}{Lemma}[section] 
+\newtheorem{notation}{Notation}[section] 
+\newtheorem{remark}{Remark}[section] 
+\newtheorem{corollary}{Corollary} [section] 
+\newtheorem{terminology}{Terminology}[section] 
+\newtheorem{fact}{Fact}[section] 
+\newtheorem{example}{Example}[section] 
 \newtheorem{claim}{Claim}
+\newtheorem*{question}{Question} 
+\newtheorem*{conjecture}{Conjecture}
 \newenvironment{claimproof}[1]{\par\noindent\underline{Proof:}\space#1}{\hfill $\blacksquare$}
 
 \DeclareMathOperator{\tmod}{mod}
@@ -144,6 +146,7 @@ mysymbol/.style={start anchor=center,end anchor=center,draw=none}
 \newcommand{\cT}[0]{\mathcal{T}}
 \newcommand{\cF}[0]{\mathcal{F}}
 \newcommand{\cG}[0]{\mathcal{G}}
+\newcommand{\ul}[1]{\underline{#1}}
 \newcommand{\nat}[0]{\mathrm{nat}}
 \newcommand{\tand}[0]{\text{ and }}
 \newcommand{\tor}[0]{\text{ or }}
@@ -157,6 +160,7 @@ mysymbol/.style={start anchor=center,end anchor=center,draw=none}
 \newcommand{\PreShv}[0]{\mathrm{PreShv}}
 \newcommand{\Shv}[0]{\mathrm{Shv}}
 \newcommand{\Perv}[0]{\mathrm{Perv}}
+\newcommand{\pt}[0]{\mathrm{pt}}
 \newcommand{\fib}[1]{%
   \mathbin{\mathop{\times}\limits_{#1}}%
 }
@@ -175,24 +179,80 @@ mysymbol/.style={start anchor=center,end anchor=center,draw=none}
 \section{Introduction}
 \subsection{Overview of the Course}
 %10/12
-$X$ a smooth complex projective algebraic variety of dimension $\dim_\C X= d$. Then there is an isomorphism $H^i(X,\Q)\to H^{2d-i}(X,\Q)$ given by multiplication with some $l\in H^2(X,\Q)$. 
-\begin{center}
+Given a topological space $X$, we can compute its singular cohomology $H^\bullet(X;k)$ over a commutative ring $k$.
+\begin{example}
+    \begin{equation*}
+        H^i(\{\mathrm{pt}\};k)=\begin{cases}
+            k,\quad(i=0),\\
+            0,\quad(\otherwise).
+        \end{cases}
+    \end{equation*}
+    \label{example_1_1}
+\end{example}
+\begin{example}
+    \begin{equation*}
+        H^i(S^1;k)=\begin{cases}
+            k,\quad(i=0,1),\\
+            0,\quad(\otherwise).
+        \end{cases}
+    \end{equation*}
+    \label{example_1_2}
+\end{example}
+\begin{definition}
+    \label{definition_1_1}
+    Let $X$ be a topological space. The $i$-th Betti number of $X$ is 
+    \begin{equation*}
+        b_i\defeq \dim_\Q H^i(X;\Q).
+    \end{equation*}
+\end{definition}
+\begin{example}
+    \label{example_1_3}
+    In Example \ref{example_1_2}, the Betti numbers are 
+    \begin{equation*}
+        b_i(S^1) = \begin{cases}
+            1,\quad(i=0,1),\\
+            0,\quad(\otherwise).
+        \end{cases}
+    \end{equation*}
+\end{example}
+\begin{theorem}[Poincaré Duality]
+    \label{theorem_1_1}
+    Let $M$ be a compact oriented manifold without boundary of dimension $d$, then for any $0\leq i\leq d$, we have 
+    \begin{equation*}
+        H^i(M;\Q)\cong H^{d-i}(M;\Q)^\vee.
+    \end{equation*}
+    In terms of Betti numbers, this gives us
+    \begin{equation*}
+        b_i(M) = b_{d-i}(M).
+    \end{equation*}
+\end{theorem}
+\begin{theorem}[Hard Lefschetz]
+    \label{theorem_1_2}
+    $X$ a smooth complex projective algebraic variety of dimension $\dim_\C X= d$. Then there is an isomorphism 
+    \begin{equation*}
+    H^i(X,\Q)\to H^{2d-i}(X,\Q)
+    \end{equation*}
+    given by multiplication with some power of $l\in H^2(X,\Q)$.
+    \begin{center}
     \begin{tikzcd}
 {H^i(X,\Q)} \arrow[r, "l"] \arrow[rrr, "\sim", bend right] & {H^{i+2}(X,\Q)} \arrow[r, "l"] & \cdots \arrow[r, "l"] & {H^{2d-i}(X,\Q)}
 \end{tikzcd}
 \end{center}
-We then get $b_i\leq b_{i+2}$ if $i<d$ and $b_i\geq b_{i+2}$ if $i>d$.
+\end{theorem}
+We then get $b_i\leq b_{i+2}$ if $i<d$ and $b_i\geq b_{i+2}$ if $i\leq d$.
 \begin{align*}
     b_0\leq b_2\leq\cdots\leq &b_{\mathrm{middle}}\geq\cdots\geq b_{2d},\\
-    b_1\leq b_3\leq\cdots\leq b_{\mathrm{middle}'}\geq\cdots\geq b_{2d-1}.
+    b_1\leq b_3\leq\cdots\leq &b_{\mathrm{middle}'}\geq\cdots\geq b_{2d-1}.
 \end{align*}
 \begin{definition}
-    Let $X$ be a complex projective variety. Then we define,
+    \label{definition_1_2}
+    For a complex projective variety $X$, we define
     \begin{equation*}
         H^{ij}(X)\defeq H^i(X,\Omega^j_X).
     \end{equation*}
 \end{definition}
 \begin{theorem}
+    \label{theorem_1_3}
     \begin{equation*}
         H^k(X,\C)= \bigoplus_{i+j=k} H^{i,j}(X), \: H^{i,j}\cong \overline{H^{j,i}(X)}.
     \end{equation*}
@@ -202,65 +262,91 @@ We then get $b_i\leq b_{i+2}$ if $i<d$ and $b_i\geq b_{i+2}$ if $i>d$.
     \end{equation*}
 \end{theorem}
 \begin{corollary}
-    if $k$ is odd then $b_k$ is even.
+    In the situation of Theorem \ref{theorem_1_4}, we have $k$ is odd $\Rightarrow$ $b_k$ is even.
 \end{corollary}
+\begin{notation}
+For a topologica space $X$, the constant sheaf of an abelian group $A$ is denoted by $\underline{A}_X$.
+\end{notation}
 \begin{theorem}[Deligne]
-    Let $f:X\to Y$ be a smooth morphism between smooth projective complex varieties. Then we have,
+    For be a smooth morphism $f:X\to Y$ between smooth projective complex varieties, we have
     \begin{equation*}
-        Rf_*\underline{\Q}_X \cong \bigoplus_{i\in\Z}\mathcal{H}^i(Rf_*\underline{\Q}_X)[-i],
+        Rf_*\underline{\Q}_X \cong \bigoplus_{i\in\Z}\mathcal{H}^i(Rf_*\underline{\Q}_X)[-i].
     \end{equation*}
-    where $\underline{\Q}_X$ denotes the constant $\Q$-sheaf on $X$.
-    \label{theorem_1_1}.
+    \label{theorem_1_4}.
 \end{theorem}
 \begin{remark}
     Consider,
     \begin{equation*}
-        S^1\to S^3\stackrel{f \text{Hopf}}{\to} S^2
+        S^1\to S^3\stackrel{\substack{ \text{\makebox[0pt][c]{$f$ a Hopf map}}\\\:}}{\to} S^2
     \end{equation*}
     Then $Rf_*\underline{\Q}_{S^3}$. However, $\mathcal{H}^0(Rf_*\underline{\Q}_{S^3}) = \underline{\Q}_{S^2}$ and $\mathcal{H}^1(Rf_*\underline{\Q}_{S^3}) = \Q_{S^2}$. Therefore,
     \begin{equation*}
         Rf_*\underline{\Q}_{S^3}\not\cong \underline{\Q}_{S^2}\oplus\underline{\Q}_{S^2}[-1], H^*(S^3)\not\cong H^*(S^2)\oplus H^{*-1}(S^2).
     \end{equation*}
-    Hence $f$ does not satisfy Theorem \ref{theorem_1_1}
+    Hence $f$ does not satisfy Theorem \ref{theorem_1_4}.
 \end{remark}
-
-The starting point of the theory was that over which spaces, do we have poincare duality. This question led to the invention of intersection cohomologies.
+\begin{question}
+Over which space, does the Poincaré duality hold?
+\end{question}
+This question led to the invention of the following notion.
 \begin{definition}[Intersection Cohomology]
-    For a variety $X$ over $\C$, 
+    \label{definition_1_3}
+    For a variety $X$ over $\C$, we associate an mathematical object $\IH^\bullet(X;\Q)$ which is called intersection cohomology.
 \end{definition}
 
-There is a perverse sheaf $\IC_X\in D^b_c(X)$ in the derived category of constructible sheaves on $X$ such that 
+\begin{theorem}
+    \label{theorem_1_5}
+    For a proper variety $X$ over $\C$ of finite dimension, we have
+    \begin{equation*}
+        \IH^i(X;\Q)\cong \IH^{2d-i}(X;\Q)^\vee.
+    \end{equation*}
+\end{theorem} 
+
+Theorem \ref{theorem_1_5} proves some versions of Theorem \ref{theorem_1_2}.
+\begin{notation}
+    Let $X$ be a topological space. The derived category of constructible sheaves on $X$ is denoted by $D^b_c(X)$.
+\end{notation}
+\begin{theorem}
+    \label{theorem_1_6}
+    For a proper variety $X$ over $\C$ of finite dimension, there is a complex of sheaves $\IC_X\in D^b_c(X)$ such that% is a perverse sheaf $\IC_X\in D^b_c(X)$ in the derived category of constructible sheaves on $X$ such that 
 \begin{equation*}
-    \IH^*(X,\Q) = H^*(X,\IC_X)
+    \IH^*(X,\Q) \cong H^*(X,\IC_X).
 \end{equation*}
-which is the cohomology of this complex of sheaves.
-Perverse sheaves, Belinson-Bernstein-Deligne 1983, BBD + Gaber also extended Deligne's theorem to $f:X\to Y$ proper.
+\end{theorem}
+\begin{definition}
+    Such $\IC_X$ in Theorem \ref{theorem_1_6} is called a perverse sheaf.
+\end{definition}
+%which is the cohomology of this complex of sheaves.
+%Perverse sheaves, Belinson-Bernstein-Deligne 1983, BBD + Gaber also extended Deligne's theorem to $f:X\to Y$ proper.
+\begin{remark}
+    Perverse sheaves were introduced by Belinson-Bernstein-Deligne in 1983. Together with Gabber, they extended Theorem \ref{theorem_1_4} to the case when $f:X\to Y$ is proper.
+\end{remark}
+\subsection{Preliminaries}
 
-\section{Recollection of Preliminaries}
-
-Let $X$ be a topological space and $k$ be a commutative ring. The category of presheaves of $k$-modules over $X$ is denoted by $\PreShv(X;k)$, similarly the sheaves of $k$-modules over $X$ is denoted by $\Shv(X;k)$.
-
+\begin{notation}
+    Let $X$ be a topological space and $k$ be a commutative ring. The category of presheaves of $k$-modules over $X$ is denoted by $\PreShv(X;k)$, similarly the sheaves of $k$-modules over $X$ is denoted by $\Shv(X;k)$.
+\end{notation}
 \begin{example}$\:$
-    \begin{enumerate}
-        \item For all $M\in\mathrm{Mod}(k)$, there is a constant sheaf $\underline{M}_X\in\Shv(X;k)$.
-        \item For $r>0$, consider morphisms of groups,
-        \begin{equation*}
-            p:\pi_1(X,x_0)\to \Aut(k^{\oplus r}).
-        \end{equation*}
-        Define $L_p4$ as follows. 
-    \end{enumerate}
+        For all $M\in\mathrm{Mod}(k)$, there is a constant sheaf $\underline{M}_X\in\Shv(X;k)$.
 \end{example}
-
+\begin{definition}
+    A local system on a topological space $X$ is a sheaf on $X$ which is locally a constant sheaf of an abelian group.
+\end{definition}
 \begin{example}
+    % For $r>0$, consider morphisms of groups,
+    %     \begin{equation*}
+    %         p:\pi_1(X,x_0)\to \Aut(k^{\oplus r}).
+    %     \end{equation*}
+    %     Define $L_p4$ as follows. 
     For $r>0$, consider morphisms of groups,
         \begin{equation*}
             p:\pi_1(X,x_0)\to \Aut(k^{\oplus r}).
         \end{equation*}
-        Define $L_p4$ as follows. Let $\pi:\tilde{X}\to X$ be the universal covering space. For $U\subseteq X$, 
+        Define $L_p$ as follows. Let $\pi:\tilde{X}\to X$ be the universal covering space. For $U\subseteq X$, 
         \begin{equation*}
             L_p \defeq \{\pi^{-1}(U)\to k\sep \forall g\in\pi_1(X,x_0), f(x\cdot g) = p(g)^{-1}f(x)\}.
         \end{equation*}
-        This is called a local sysmte $L_p$ (locally trivial).
+        Then $L_p$ is a local system on $X$.
 \end{example}
 \begin{theorem}
     $\Shv(X;k)$ is an abelian category.
@@ -275,48 +361,109 @@ Let $X$ be a topological space and $k$ be a commutative ring. The category of pr
     \begin{equation*}
         \mathrm{Mor}_{\PreShv}(\cF,\cG)\cong \mathrm{Mor}_{\Shv}(\cF^\dagger,\cG),
     \end{equation*}
-    which is natural. In particular, setting $\cG = \cF^\dagger$, we obtain a natural map $\cF\to\cF^\dagger$ which is obtained from $\id\in\mathrm{Mor}_{\Shv}(\cF^\dagger,\cF^\dagger)$.
+    which is natural. In particular, setting $\cG = \cF^\dagger$, there is a natural map $\cF\to\cF^\dagger$ which is obtained from $\id\in\mathrm{Mor}_{\Shv}(\cF^\dagger,\cF^\dagger)$.
 \end{proposition}
 \begin{proposition}
     The natural morphism $\cF\to \cF^\dagger$ induced isomorphisms on stalks.
 \end{proposition}
 
-\subsection{Derived Categories}
 \begin{definition}
-    The derived category on $\Shv(X;k)$ consists of 
-    \begin{enumerate}[i. ]
-        \item objects complex of sheaves,
+        Given a complex of sheaves,
         \begin{equation*}
             \cF^\bullet \defeq \cdots\to \cF^{i-1}\stackrel{d^{i-1}}{\to}\cF^i\stackrel{d^{i}}{\to}\cF^{i+1}\cdot
         \end{equation*}
-        \item The cohomology of sheaves if $\cH(\cF^\bullet) \defeq\ker d^i\oplus\image d^{i-1}$.
-        \item Quasi-isomorphisms $\cF^\bullet\to\cG^\bullet$ is called a quasi-isomorphism if it induces isomorphism in cohomologies.
-    \end{enumerate}
-    The derived category = complex of sheaves / q-iso. This turns out to be a triangulated category.
+        we define its cohomology of sheaves to be 
+        \begin{equation*}
+            \cH(\cF^\bullet) \defeq\ker d^i\oplus\image d^{i-1}.
+        \end{equation*}
+        A morphism of complexes is called a quasi-isomorphism if it induces isomorphisms in cohomology.
 \end{definition}
+
+\begin{definition}
+    The derived category on $\Shv(X;k)$ is a category satisfying the following.
+    \begin{enumerate}[i. ]
+        \item The objects are complex of sheaves,
+        \begin{equation*}
+            \cF^\bullet \defeq \cdots\to \cF^{i-1}\stackrel{d^{i-1}}{\to}\cF^i\stackrel{d^{i}}{\to}\cF^{i+1}\cdot
+        \end{equation*}
+        \item The morphisms are morphisms of complexes.
+        \item Quasi-isomorphisms are invertible.
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}
+    The derived category of sheaves on $X$ over $k$ is a triangulated category.
+\end{remark}
 
 However the derived category turns out to be to large to handle. Therefore, we will use a smaller category called the bounded constructible derived category of sheaves denoted by $D_c^b(X;k)$.
 
+\begin{remark}
+    The category of bounded constrictible derived category of sheaves $D_c^b(X)$ is a subcategory of the derived category of sheaves which is more manageable.
+\end{remark}
 \begin{definition}
-    There exists a stratification in locally closed subspaces $X = \bigsqcup_\alpha S_\alpha$ such that $\cH^i(\cF^\bullet)|_{S_\alpha}$ is a finite rank local system and $\cH^i(\cF^\bullet) = 0$ for $\ab{i}\gg 0$.
+    There exists a stratification in locally closed subspaces $X = \bigsqcup_\alpha S_\alpha$. That is for $\cF^\bullet\in D_c^b(X)$, we have $\cH^i(\cF^\bullet)|_{S_\alpha}$ is a finite rank local system and $\cH^i(\cF^\bullet) = 0$ for $\ab{i}\gg 0$.
 \end{definition}
 
-\par\textbf{Six-Functors}
+\begin{remark}
+    Let $f:X\to Y$ be a continuous map. The following so-called six-functors are important when it comes to produce example of sheaves,
+    \begin{equation*}
+        Rf_*\dashv f^*, f_!\dashv f^!, (\cdot\otimes\cdot)\dashv \Hom(\cdot,\cdot).
+    \end{equation*}
+\end{remark}
 
-\begin{center}
-\begin{tabular}{l|l}
-Left Adjoints         & Right Adjoints              \\ \hline
-$Rf_*$ pushforward    & $f^*$ pullback              \\ \hline
-$f_!$                 & $f^!$                       \\ \hline
-$(\cdot\otimes\cdot)$ & $\mathrm{Hom}(\cdot,\cdot)$
-\end{tabular}
-\end{center}
+% \begin{center}
+% \begin{tabular}{l|l}
+% Left Adjoints         & Right Adjoints              \\ \hline
+% $Rf_*$ pushforward    & $f^*$ pullback              \\ \hline
+% $f_!$                 & $f^!$                       \\ \hline
+% $(\cdot\otimes\cdot)$ & $\mathrm{Hom}(\cdot,\cdot)$
+% \end{tabular}
+% \end{center}
 
 \begin{remark}
+    \label{remark_1_6}
     If $f$ is proper then $Rf_* = f_!$, if $f$ is open immersion then $f^* = f^!$.
 \end{remark}
 
 %10/13
+
+\begin{theorem}
+    \begin{equation*}
+        D_c^b(X;k)\cong D^b(\Shv_c(X;k)).
+    \end{equation*}
+\end{theorem}
+
+\begin{example}
+    For a scheme $X$ and $\alpha:X\to\mathrm{pt}$, we have,
+    \begin{equation*}
+        \alpha_*\ul{k}_{\mathrm{pt}} \cong \ul{k}_X,\alpha^!\ul{k}_{\mathrm{pt}}\cong \omega_X.
+    \end{equation*}
+\end{example}
+
+With the aid of these functors, we define(reconstruct) following complexes.
+\begin{definition}
+    \begin{align*}
+        H^\bullet(X;k) &\defeq \alpha_*\alpha^*\ul{k}_\pt,\\
+        H^{\mathrm{BM}}(X;k) &\defeq\alpha_*\alpha^!\ul{k}_\pt,\\
+        H^*_c(X;k)&\defeq \alpha_!\alpha^*\ul{k}_\pt,\\
+        H_*(X;k)&\defeq \alpha_!\alpha^!\ul{k}_\pt.
+    \end{align*}
+\end{definition}
+
+\begin{example}
+    Let $Z\subseteq X$ be closed and $U=X\backslash Z$. Consider $Z\stackrel{i \text{ closed}}{\hookrightarrow}X\stackrel{j \text{open}}{\hookleftarrow}U$. This gives natural transformations,
+    \begin{equation*}
+        (\cdot)\to i_*i^*(\cdot), (\cdot)\to j_*j^*(\cdot),(\cdot)\to i_!i^!(\cdot),(\cdot)\to j_!j^!(\cdot).
+    \end{equation*} 
+    Furthermore, this gives an exact triangle,
+    \begin{equation*}
+        j_!j^!(\cdot)\to (\cdot)\to i_*i^*(\cdot)\to[+1].
+    \end{equation*}
+    Using Remark \ref{remark_1_6} and plugging in $\ul{k}_X = \alpha_*\ul{k}_\pt$, we obtain
+    \begin{equation*}
+        \alpha_*j_!\ul{k}_U\to\alpha_*\ul{k}_X\to \alpha_*i_*\ul{k}_Z\to
+    \end{equation*}
+\end{example}
 
 Suppose $X=U\cup V$ and $W = U\cap V$, and there are natural transformations,
 \begin{equation*}
