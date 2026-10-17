@@ -112,6 +112,7 @@ mysymbol/.style={start anchor=center,end anchor=center,draw=none}
 \newcommand{\G}[0]{\mathbb{G}}
 \newcommand{\bA}[0]{\mathbb{A}}
 \newcommand{\bT}[0]{\mathbb{T}}
+\newcommand{\bD}[0]{\mathbb{D}}
 \newcommand{\cK}[0]{\mathcal{K}}
 \newcommand{\cH}[0]{\mathcal{H}}
 \newcommand{\Para}[0]{\mathbb{P}}
@@ -461,36 +462,88 @@ With the aid of these functors, we define(reconstruct) following complexes.
     \end{equation*}
     Using Remark \ref{remark_1_6} and plugging in $\ul{k}_X = \alpha_*\ul{k}_\pt$, we obtain
     \begin{equation*}
-        \alpha_*j_!\ul{k}_U\to\alpha_*\ul{k}_X\to \alpha_*i_*\ul{k}_Z\to
+        \alpha_*j_!\ul{k}_U\to\alpha_*\ul{k}_X\to \alpha_*i_*\ul{k}_Z.
+    \end{equation*}
+    \label{example_2_1}
+\end{example}
+
+\begin{example}
+    In Example \ref{example_2_1}, we also have another triangle
+    \begin{equation*}
+        i_!i^!(\cdot)\to (\cdot)\to j_*j^*(\cdot)\to[+1].
+    \end{equation*}
+    Plug $\omega_X\defeq \alpha^!\ul{k}_\pi$ to it and use Remark \ref{remark_1_6}, we obtain 
+    \begin{equation*}
+        i_*\omega_x\to \omega_x\to j^*\omega\to[+1].
+    \end{equation*}
+    Applying $\alpha_*$, we get
+    \begin{equation*}
+        \alpha_*i_*\omega_x\to \alpha_*\omega_x\to \alpha_*j^*\omega\to[+1].
+    \end{equation*}
+    This gives a rise to the following long exact sequence,
+    \begin{equation*}
+        \cdots\to H_i^{\mathrm{BM}}(Z;k)\to H_i^{\mathrm{BM}}(X;k)\to H_i^{\mathrm{BM}}(U;k)\to \cdots
     \end{equation*}
 \end{example}
 
+\begin{example}
+    Let $X=U\cup V$ be a covering and $W=U\cap V$. Set $j_U,j_V,j_W$ be the corresponding canonical inclusions. Then 
+    \begin{equation*}
+        (\cdot)\to j_{U,*}j^*_U(\cdot)\oplus j_{V,*}j^*_V(\cdot)\to j_{W,*}j^*_W(\cdot)\to [+1].
+    \end{equation*}
+    Plug $\ul{k}_X$ and apply $\alpha_*$, we obtain Mayer-Vietoris,
+    \begin{equation*}
+        H^\bullet(X;k)\to H^\bullet(U;k)\oplus H^\bullet(V;k)\to H^\bullet(W;k)\to H^{\bullet+1}(X;k)\to\cdots
+    \end{equation*}
+\end{example}
 Suppose $X=U\cup V$ and $W = U\cap V$, and there are natural transformations,
 \begin{equation*}
     (\cdot)\to (j_V)_*(j_U)^*(\cdot).
 \end{equation*}
 
-In the category of sheaves $\Shv(X;k)\subseteq D_c^b(X;k)$.
 
-\begin{center}
+\subsection{Informal Definition of Perverse Sheaves}
+% In the category of sheaves $\Shv(X;k)\subseteq D_c^b(X;k)$.
+
+\begin{definition}
+    \begin{equation*}
+        \bD(\cdot) = \Hom(\cdot,\omega_X):\Shv(X;k)\to\Shv(X;k).
+    \end{equation*}
+\end{definition}
+
+% \begin{definition}
+%     A bounded complex $\cF\in D_c^b(X;k)$ is called a perverse sheaf if for any $i\in\Z$, 
+%     \begin{equation*}
+%         \dim_k\sup H^i(\cF)\leq i,\dim_k\sup H^i(\bD(\cF))\leq i.
+%     \end{equation*}
+%     The category is perverse sheaves is the full subcategory $\Perv(X;k)$ of $D^b_c(X;k)$ whose objects are perverse sheaves. 
+% \end{definition}
+
+\begin{notation}
+    We will consider $\Shv(X;k)$ in its derived category. The full subcategory of constructible sheaves is denoted by $\Shv_c(X;k)$. The constructible bounded sheaves is then denoted by $D_c^b(X;k)=D^b(\Shv_c(X;k))$.
+    \begin{center}
     \begin{tikzcd}
 \Shv(X;k) \arrow[r, hook]                   & D^b(\Shv(X;k))                   \\
 \Shv_c(X;k) \arrow[u, hook] \arrow[r, hook] & D^b_c(\Shv(X;k)) \arrow[u, hook]
 \end{tikzcd}
 \end{center}
+\end{notation}
+
 
 \begin{definition}
-    The Perverse sheves is $\Perv(X;k)\subseteq D_c^b(\Shv(X;k))$, where $X$ is fnite-type variety over a field.
-    \par Explicitly, for $D(\cdot)= \mathcal{H}om(\cdot,\omega_X)$, define $\cF\in D_c^b(X;k)$ is a perverse sheaf 
-    if for all $n\in\Z$, $\dim\supp\mathcal{H}(\cF)\leq i$ and $\dim\supp\cH(D(\cF))\leq i$.
+    % The Perverse sheves is $\Perv(X;k)\subseteq D_c^b(\Shv(X;k))$, where $X$ is fnite-type variety over a field.
+    Let $X$ be a variety of finite type over a field $k$. 
+    % \par Explicitly, for $D(\cdot)= \mathcal{H}om(\cdot,\omega_X)$, define 
+    $\cF\in D_c^b(X;k)$ is a perverse sheaf if for all $n\in\Z$, $\dim_k\supp\mathcal{H}(\cF)\leq i$ and $\dim\supp\cH(\bD(\cF))\leq i$.
+    \par The full subcategory of perverse sheaves is denoted by $\Perv(X;k)\subseteq D_c^b(\Shv(X;k))$. This turns out to be an abelian category.
 \end{definition}
 
 \begin{example}
-    Let $X$ be a smooth variety over $\C$ of dimension $\dim_\C X = d$, then,
+    Let $X$ be a smooth variety over $\C$ of dimension $d$, 
     \begin{equation*}
-        \omega_X = k_X[2d],
+        \omega_X = k_X[2d].
     \end{equation*}
-    then $\underline{k}_X[d]$ is a perverse sheaf and $\mathbb{D}(\underline{k}_k[d]) = \underline{k}_X[d]$.
+    Then $\underline{k}_X[d]$ is a perverse sheaf and $\mathbb{D}(\underline{k}_k[d]) = \underline{k}_X[d]$.
     As,
     \begin{equation*}
         \cH(k_x[d]) = \begin{cases}
@@ -505,30 +558,81 @@ In the category of sheaves $\Shv(X;k)\subseteq D_c^b(X;k)$.
             -\infty,\quad(\otherwise).
         \end{cases}
     \end{equation*}
-    Similarly, if $L $is a local system on $X$, then $L[d]\in\Perv(X;k)$.
+    Similarly, if $L$ is a local system on $X$, then $L[d]\in\Perv(X;k)$.
 \end{example}
 
-\begin{theorem}
+\begin{theorem}[Bellinson-Bernstein-Deligne]
     $\Perv(X;k)$ is an Abelian category which is both Noetherian and Artinian.
+    Furthermore, $D^b(\Perv(X;k)) = D^b(X;k)$.
 \end{theorem}
 
-Every perverse sheaf has a composition series with ?
-All simple objects are constructed as follows,
+\begin{remark}
+    Every perverse shaef as a composition series where all objects are simple.
+\end{remark}
 
+Hence it is an interesting question to ask how these simple objects are constructed.
+
+\begin{remark}
+    Consider a smooth variety of finite type $X$, $Z$ a closed subvariety and $V$ an open smooth subset contained in $Z$.
+    \par Let $L$ be a local system on $V$, then one can construct a perverse sheaf $\IC_Z(L)\in \Perv(X;k)$ which is supported on $Z$ and $\IC_Z(L)|_V = L[\dim V]$.
+\end{remark}
+
+\begin{example}
+    Let $X$ be a variety of finite type and $U=X^{\mathrm{sm}}$ be an smooth open subvariety. $L = \ul{k}_U$ is a local system and we call $\IC_X\defeq \IC_X(\ul{k}_U)$ the intersection complex. This turns out to be isomorphic to $\ul{\Q}_X[\dim X]$ whose cohomology is $IH^\bullet(X;k)$. 
+    This satisfies both Poincaré duality and hard Lefschetz.
+\end{example}
+
+Recall Theorem \ref{theorem_1_4} and the formula 
 \begin{equation*}
-    \underbrace{X}_{\text{smooth finite-type variety}}\hookleftarrow \underbrace{Z}_{\text{closed subvariety}}\hookleftarrow \underbrace{U}_{\text{open smooth}}.
-\end{equation*}
+        \underbrace{Rf_*\underline{\Q}_X}_{\in D_c^b(Y;k)} \cong \bigoplus_{i\in\Z}\mathcal{H}^i(\underbrace{Rf_*\underline{\Q}_X}_{\mathmakebox[0pt][c]{\in \Shv_c(Y;k)}})[-i].
+    \end{equation*}
+where $f:X\to Y$ is a smooth projective map between smooth projective varieties. We have a stronger statement to it.
+\begin{theorem}
+    For a proper map $f:X\to Y$ between varieties of finite over $k$, we have 
+    \begin{equation*}
+        \underbrace{f_*\IC_X}_{\mathmakebox[0pt][r]{D^b(\Perv(Y;k))=D^b(Y;k)\ni}} \cong \bigoplus_{i\in\Z}\prescript{p}{}{\cH}^i(\underbrace{f_*\IC_X}_{\mathmakebox[0pt][c]{\in\Perv(Y;k)}})[-1],
+    \end{equation*}
+    where for all $i\in\Z$, we set 
+    \begin{equation*}
+        \prescript{p}{}{\cH}^i(f_*\IC_X) = \bigoplus_{j}\IC_{Z_j}(L_j),
+    \end{equation*}
+    where each summand on the right hand side is simple.
+    \label{theorem_2_4}
+\end{theorem}
 
-Let $L$ be a local system on $V$, then we construct a perverse sheave,
+\begin{remark}
+    I the derived cateogory, $f_*\IC_X$ admits is quasi-isomorphic to a complex with each term a perverse sheaf. Hence it makese sense to talk about the above cohomology.
+\end{remark}
 
-\begin{align*}
-    \IC_Z(L)\subseteq\Perv(X;k),
-\end{align*}
+\begin{remark}
+    Let $f:X\to Y\stackrel{a}{\to}\pt$ be a resolution of singularities. From Theorem \ref{theorem_1_4} and Theorem \ref{theorem_2_4}, 
+    \begin{equation*}
+        \underbrace{f_*\IC_Y}_{\cong f_*\ul{\Q}[\dim Y]} = \bigoplus_{\substack{\text{closed subvarieties $Z_i$}\\\text{local systems $L_i$,}\\\text{on open subset of $Z_i$}}}\IC_Z(L_i)[\text{shifts}]
+    \end{equation*}
+    Furthermore $\IC_X$ appears as a summand on the right hand side.
+    \par Using that $f$ is a resolution of singularities hence induces an isomorphism $f^\mathrm{sm}:X^{\mathrm{sm}}\stackrel{\sim}{\to} Y^\mathrm{sm}$. Therefore, we obtain 
+    \begin{equation*}
+        f_*\IC_Y|_{X^\mathrm{sm}}=(f^{\mathrm{sm}})_*\IC_{Y^\mathrm{sm}}=\ul{\Q}_{X^\mathrm{sm}}[\dim X].
+    \end{equation*}
+    Hence there will be a summand of $f_*\IC_Y$ which restricts to $\ul{\Q}_{X^\mathrm{sm}}$ which will turn out to be $\IC_X$. Furthermore, by applying $a_*$, $\IH^\bullet(X)$ will appear as a summand of $H^\bullet(Y;k)$.
+\end{remark}
+% Every perverse sheaf has a composition series with ?
+% All simple objects are constructed as follows,
 
-If it is supported on $Z$ and 
-\begin{equation*}
-    \IC_Z(L)|_V = L[\dim V].
-\end{equation*}
+% \begin{equation*}
+%     \underbrace{X}_{\text{smooth finite-type variety}}\hookleftarrow \underbrace{Z}_{\text{closed subvariety}}\hookleftarrow \underbrace{U}_{\text{open smooth}}.
+% \end{equation*}
+
+% Let $L$ be a local system on $V$, then we construct a perverse sheave,
+
+% \begin{align*}
+%     \IC_Z(L)\subseteq\Perv(X;k),
+% \end{align*}
+
+% If it is supported on $Z$ and 
+% \begin{equation*}
+%     \IC_Z(L)|_V = L[\dim V].
+% \end{equation*}
 
 \begin{thebibliography}{9}
 \bibitem{Achar}
@@ -537,3 +641,5 @@ Pramod Achar, Perverse Sheaves and Applications to Representation Theory.
 Mark de Cataldo, Luca Migliorini, The Decomposition Theorem and the topology of algebraic maps.
 \end{thebibliography}
 \end{document}
+
+The above is the typed lecture note of the course on perverse sheaf theory with main references Achar.pdf and Cataldo.pdf. It only contains the overview and informal introduction to the theory, could you revise any possible mistakes about the validity of the statements along with typos?
