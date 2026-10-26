@@ -1,11 +1,11 @@
 # Fdb version 4
-["dvipdf"] 1792205328.28423 "PerverseSheaevs.dvi" "PerverseSheaevs.pdf" "PerverseSheaevs" 1792205328.45699 0
-  "PerverseSheaevs.dvi" 1792205328.25973 46304 d38476c4032aab47660a4195e9c7368a "latex"
+["dvipdf"] 1793003936.98057 "PerverseSheaves.dvi" "PerverseSheaves.pdf" "PerverseSheaves" 1793003937.16328 0
+  "PerverseSheaves.dvi" 1793003936.95632 152984 f4b614d44514c9de330d0edcdf9086a0 "latex"
   (generated)
-  "PerverseSheaevs.pdf"
+  "PerverseSheaves.pdf"
   (rewritten before read)
-["latex"] 1792205327.77189 "/Users/tsurugi/Desktop/Universities/UniBonn/Semester5/V5DA1-PerverseSheaves/Notes/PerverseSheaevs.tex" "PerverseSheaevs.dvi" "PerverseSheaevs" 1792205328.45582 0
-  "/Users/tsurugi/Desktop/Universities/UniBonn/Semester5/V5DA1-PerverseSheaves/Notes/PerverseSheaevs.tex" 1792205327.52201 25739 f70ea1342d1de70c13c0ab31d54cec2f ""
+["latex"] 1793003936.02161 "/Users/tsurugi/Desktop/Universities/UniBonn/Semester5/V5DA1-PerverseSheaves/Notes/PerverseSheaves.tex" "PerverseSheaves.dvi" "PerverseSheaves" 1793003937.1622 0
+  "/Users/tsurugi/Desktop/Universities/UniBonn/Semester5/V5DA1-PerverseSheaves/Notes/PerverseSheaves.tex" 1793003935.81183 36020 92a5dff7f4aa71322b4676ef04d31cc5 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -16,17 +16,20 @@
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm" 1246382020 940 75ac932a52f80982a9f8ea75d03a34cf ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm" 1246382020 940 228d6584342e91276bf566bcf9716b83 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
-  "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmbx8.tfm" 1136768653 1332 1fde11373e221473104d6cc5993f046e ""
+  "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
+  "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmex10.tfm" 1136768653 992 662f679a0b3d2d53c1b94050fdaa3f50 ""
+  "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm" 1136768653 1512 f21f83efb36853c0b70002322c1ab3ad ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmmi8.tfm" 1136768653 1520 eccf95517727cb11801f4f1aee3a21b4 ""
-  "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr10.tfm" 1136768653 1296 45809c5a464d5f32c8f98ba97c1bb47f ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1136768653 1288 655e228510b4c2a1abe905c368440826 ""
+  "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr17.tfm" 1136768653 1292 296a67155bdbfc32aa9c636f21e91433 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr6.tfm" 1136768653 1300 b62933e007d01cfd073f79b963c01526 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmr8.tfm" 1136768653 1292 21c1c5bfeaebccffdb478fd231a0997d ""
+  "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm" 1136768653 1124 6c73e740cf17375f03eec0ee63599741 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm" 1136768653 1116 933a60c408fc0a863a92debe84b2d294 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1136768653 1120 8b7d695260f3cff42e636090a8002094 ""
+  "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmti10.tfm" 1136768653 1480 aa8e34af0eb6a2941b776984cf1dfdc4 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmti7.tfm" 1136768653 1492 86331993fe614793f5e7e755835c31c5 ""
-  "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/cm/cmti8.tfm" 1136768653 1504 1747189e0441d1c18f3ea56fafc1c480 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm" 1229303445 688 37338d6ab346c2f1466b29e195316aa4 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/rsfs/rsfs5.tfm" 1229303445 684 3a51bd4fd9600428d5264cf25f04bb9a ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/rsfs/rsfs7.tfm" 1229303445 692 1b6510779f0f05e9cbf03e0f6c8361e6 ""
@@ -114,7 +117,6 @@
   "/usr/local/texlive/2025/texmf-dist/tex/latex/bbm-macros/bbm.sty" 1191314257 1644 1e0d54b051369c3f457872824cac219f ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/collectbox/collectbox.sty" 1666037909 9124 59c3b56f1a073de66e3eea35f9c173c8 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/extsizes/extsizes.sty" 1137110130 3240 8f6d502ca1d06cc8136c36580bba7618 ""
-  "/usr/local/texlive/2025/texmf-dist/tex/latex/extsizes/size8.clo" 1137110130 6172 5062a8faf7cb200267aa33f36102c207 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty" 1739048179 31715 19e60610b63819fe670dfa1cd84a4e94 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/graphics-cfg/color.cfg" 1459978653 1213 620bba36b25224fa9b7e1ccb4ecb76fd ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/graphics-cfg/graphics.cfg" 1465944070 1224 978390e9c2234eab29404bc21b268d1e ""
@@ -155,10 +157,10 @@
   "/usr/local/texlive/2025/texmf-dist/web2c/texmf.cnf" 1739380943 42148 61becc7c670cd061bb319c643c27fdd4 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/latex.fmt" 1760893821 3345650 f2179b917b551c7214098855962de784 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "PerverseSheaevs.aux" 1792205328.25899 1330 a3390a6aae781ad6e3a1589a49367bd8 "latex"
-  "PerverseSheaevs.tex" 1792205327.52201 25739 f70ea1342d1de70c13c0ab31d54cec2f ""
+  "PerverseSheaves.aux" 1793003936.95591 571 69a4769ab43e13f2158a34391d35594e "latex"
+  "PerverseSheaves.tex" 1793003935.81183 36020 92a5dff7f4aa71322b4676ef04d31cc5 ""
   (generated)
-  "PerverseSheaevs.aux"
-  "PerverseSheaevs.dvi"
-  "PerverseSheaevs.log"
+  "PerverseSheaves.aux"
+  "PerverseSheaves.dvi"
+  "PerverseSheaves.log"
   (rewritten before read)

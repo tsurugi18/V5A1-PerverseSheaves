@@ -1,0 +1,775 @@
+\documentclass[10pt]{article}
+\linespread{1}
+\usepackage{extsizes}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{ mathrsfs }
+\usepackage{ mathtools}
+\usepackage{enumerate}
+\usepackage{bbm}
+\usepackage{lipsum}
+\usepackage{fancyhdr}
+\usepackage{tikz-cd}
+\usepackage{adjustbox}
+\usepackage{ stmaryrd }
+\numberwithin{equation}{section}
+\usetikzlibrary{arrows}
+\newcommand{\midarrow}{\tikz \draw[-triangle 90] (0,0) -- +(.1,0);}
+\tikzset{commutative diagrams/.cd,
+mysymbol/.style={start anchor=center,end anchor=center,draw=none}
+}
+\newcommand\comsymb[2][\circlearrowleft]{
+  \arrow[mysymbol]{#2}[description]{#1}}
+
+\newtheorem{theorem}{Theorem} [section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{notation}{Notation}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{corollary}{Corollary} [section]
+\newtheorem{terminology}{Terminology}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{claim}{Claim}
+\newtheorem*{question}{Question}
+\newtheorem*{conjecture}{Conjecture}
+\newenvironment{claimproof}[1]{\par\noindent\underline{Proof:}\space#1}{\hfill $\blacksquare$}
+
+\DeclareMathOperator{\tmod}{mod}
+\DeclareMathOperator{\triv}{triv}
+\DeclareMathOperator{\ind}{ind}
+\DeclareMathOperator{\straw}{s.t.}
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Map}{Map}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\esssup}{esssup}
+\DeclareMathOperator{\abs}{abs}
+\DeclareMathOperator{\rel}{rel}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Homk}{Hom_{k-alg}}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Image}{Im}
+\DeclareMathOperator{\Dom}{Dom}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\divergence}{div}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\mSpec}{mSpec}
+\DeclareMathOperator{\MaxSpec}{MaxSpec}
+\DeclareMathOperator{\interior}{int}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\PD}{PD}
+\DeclareMathOperator{\ext}{ext}
+\DeclareMathOperator{\vol}{vol}
+\DeclareMathOperator{\inte}{int}
+\DeclareMathOperator{\diverg}{div}
+\DeclareMathOperator{\curl}{curl}
+\DeclareMathOperator{\image}{im}
+\DeclareMathOperator{\dR}{dR}
+\DeclareMathOperator{\Ob}{Ob}
+\DeclareMathOperator{\Mnfd}{Mnfd}
+\DeclareMathOperator{\OpEmb}{OpEmb}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Spa}{Spa}
+\DeclareMathOperator{\Lim}{Lim}
+\DeclareMathOperator{\Alg}{\mathcal{A}}
+\DeclareMathOperator{\glim}{glim}
+\DeclareMathOperator{\con}{con}
+\DeclareMathOperator{\Spv}{Spv}
+\DeclareMathOperator{\clet}{c}
+\DeclareMathOperator{\tat}{at}
+\DeclareMathOperator{\Sheaf}{Sheaf}
+\DeclareMathOperator{\Cont}{Cont}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\Ouv}{\mathscr{O}}
+\newcommand{\norm}[1]{\Vert #1 \Vert}
+\newcommand{\opNorm}[2]{\norm{#1}_{#2\to#2}}
+\newcommand{\normL}[3]{\norm{#1}_{L^{#2}(#3)}}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\m}[0]{\mathfrak{m}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\Z}[0]{\mathbb{Z}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\Q}[0]{\mathbb{Q}}
+\newcommand{\F}[0]{\mathcal{F}}
+\newcommand{\U}[0]{\mathcal{U}}
+\newcommand{\B}[0]{\mathcal{B}}
+\newcommand{\G}[0]{\mathbb{G}}
+\newcommand{\bA}[0]{\mathbb{A}}
+\newcommand{\bT}[0]{\mathbb{T}}
+\newcommand{\bD}[0]{\mathbb{D}}
+\newcommand{\cK}[0]{\mathcal{K}}
+\newcommand{\cH}[0]{\mathcal{H}}
+\newcommand{\cD}[0]{\mathcal{D}}
+\newcommand{\Para}[0]{\mathbb{P}}
+\newcommand{\M}[0]{\mathcal{M}}
+\newcommand{\maniN}[0]{\mathcal{N}}
+\newcommand{\cinf}[0]{\mathcal{C}^\infty}
+\newcommand{\torus}[0]{\mathbb{T}}
+\newcommand{\cR}[0]{\mathcal{R}}
+\newcommand{\sep}[0]{\:|\:}
+\newcommand{\pd}[2]{{\frac {\partial #1} {\partial #2}}}
+\newcommand{\compinc}[0]{\subset \subset}
+\newcommand{\sH}[0]{\mathscr{H}}
+\newcommand{\Nfil}[0]{\mathcal{N}}
+\newcommand{\g}[0]{\mathfrak{g}}
+\newcommand{\p}[0]{\mathfrak{p}}
+\newcommand{\QC}[0]{\mathfrak{Q}_C}
+\newcommand{\ab}[1]{\vert #1 \vert}
+\newcommand{\st}[0]{\:\straw\:}
+\newcommand{\cGamma}[0]{c\Gamma}
+\newcommand{\sC}[0]{\mathscr{C}}
+\newcommand{\sU}[0]{\mathscr{U}}
+\newcommand{\cV}[0]{\mathcal{V}}
+\newcommand{\sA}[0]{\mathscr{A}}
+\newcommand{\sB}[0]{\mathscr{B}}
+\newcommand{\sI}[0]{\mathscr{I}}
+\newcommand{\sJ}[0]{\mathscr{J}}
+\newcommand{\sX}[0]{\mathscr{X}}
+\newcommand{\sS}[0]{\mathscr{S}}
+\newcommand{\sD}[0]{\mathscr{D}}
+\newcommand{\sT}[0]{\mathscr{T}}
+\newcommand{\cB}[0]{\mathcal{B}}
+\newcommand{\cA}[0]{\mathcal{A}}
+\newcommand{\cC}[0]{\mathcal{C}}
+\newcommand{\cO}[0]{\mathcal{O}}
+\newcommand{\cT}[0]{\mathcal{T}}
+\newcommand{\cF}[0]{\mathcal{F}}
+\newcommand{\cG}[0]{\mathcal{G}}
+\newcommand{\ul}[1]{\underline{#1}}
+\newcommand{\nat}[0]{\mathrm{nat}}
+\newcommand{\tand}[0]{\text{ and }}
+\newcommand{\tor}[0]{\text{ or }}
+\newcommand{\dcirc}[0]{{\circ\circ}}
+\newcommand{\otherwise}[0]{\text{ otherwise }}
+\newcommand{\Rat}[0]{\mathfrak{Rat}}
+\newcommand{\polring}[1]{[X_1,\cdots,X_{#1}]}
+\newcommand{\compring}[1]{\langle X_1,\cdots,X_{#1}\rangle}
+\newcommand{\IH}[0]{\mathrm{IH}}
+\newcommand{\IC}[0]{\mathrm{IC}}
+\newcommand{\PreShv}[0]{\mathrm{PreShv}}
+\newcommand{\Shv}[0]{\mathrm{Shv}}
+\newcommand{\Perv}[0]{\mathrm{Perv}}
+\newcommand{\Com}[0]{\mathrm{Com}}
+\newcommand{\pt}[0]{\mathrm{pt}}
+\newcommand{\coker}[0]{\mathrm{coker}}
+\newcommand{\fib}[1]{
+  \mathbin{\mathop{\times}\limits_{#1}}
+}
+\newcommand{\tens}[1]{
+  \mathbin{\mathop{\otimes}\displaylimits_{#1}}
+}
+\newcommand{\comppol}[1]{\langle X_1,\cdots, X_{#1}\rangle}
+
+\title{Perverse Sheaves}
+\author{Based on Lectures given by\\Prof. Dr. Tudor Pădurariu}
+\date{WiSe 26/27, University of Bonn}
+
+\begin{document}
+\maketitle
+%10/19
+
+\section{Preliminaries}
+\subsection{From Abelian Categories to Derived Categories}
+\begin{example}
+    The category of sheaves of $k$-modules $\Shv(X;k)$ where $X$ is a topological space and $k$ is a commutative ring, is an abelian category.
+\end{example}
+
+The problem with the above category is that many functors that we are interested in are not exact. This problem motivates us to the notion of derived categories. The idea is the following. 
+First, we start with an abelian category $\sA$. 
+\begin{equation*}
+    \underbrace{\sA}_{\text{\makebox[35pt][c]{Abelian Category}}}\to \underbrace{\Com(\sA)}_{\substack{\text{Chain Complexes over}\\\text{the Abelian Category}\\\text{It is still abelian}}}\to\underbrace{\cK(\sA)}_{\substack{\text{Homotopy Category of $\sA$}\\\text{no longer abelian category}\\\text{however triangulated}}}\to\underbrace{\cD(\sA)}_{\substack{\text{Derived category of $\sA$}\\\text{This is triangulated}}}
+\end{equation*}
+
+\begin{definition}
+    Let $\sA$ be an abelian category. The category of cochain complexes of $\sA$ is a category such that 
+    \begin{enumerate}
+        \item objects are complexes $K^\bullet\defeq \cdots\to K^{i-1}\stackrel{d^{i-1}}{\to} K^i\stackrel{d^{i}}{\to} K^{i+1}\to \cdots$ (i.e., $d^i\circ d^{i-1}=0$).
+        \item morphisms are $f^\bullet:K^\bullet\to L^\bullet$ such that $d^i_L\circ f^{i} = f^{i+1}\circ d^{i}_K$ for any $i\in\Z$.
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}
+    $\Com(\sA)$ is abelian.
+\end{remark}
+
+\begin{notation}
+    The following full subcategories of $\Com(\sA)$ are sometimes useful.
+    \begin{enumerate}[1. ]
+        \item $\Com^+(\sA)$ consists of complexes $K^\bullet$ such that for $i\ll 0\Rightarrow K^i=0$.
+        \item $\Com^-(\sA)$ consists of complexes $K^\bullet$ such that for $i\gg 0\Rightarrow K^i=0$.
+        \item $\Com^b(\sA)$ consists of complexes $K^\bullet$ such that for $\ab{i}\gg 0\Rightarrow K^i=0$.
+    \end{enumerate}
+\end{notation}
+
+\begin{definition}
+    For a cochain complex $K^\bullet$ in $\sA$, define 
+    \begin{equation*}
+        \cK(\sA^i) \defeq \ker d_K^i/\image d_K^{i-1}\in \sA,\forall i\in\Z.
+    \end{equation*}
+    The total cohomology is defined by 
+    \begin{equation*}
+        \cH^\bullet(K^\bullet) = \bigoplus_{\Z}\cH^i(K^\bullet)[-i].
+    \end{equation*}
+    Since $H^i(K^\bullet)$ is concentrated at degree $0$, we decompose this into,
+    \begin{equation*}
+        \cdots\stackrel{0}{\to} \cH^{i-1}(K^\bullet)[-(i-1)]\stackrel{0}{\to} \cH^{i}(K^\bullet)[-i]\stackrel{0}{\to} \cH^{i+1}(K^\bullet)[-(i+1)]\to\cdots
+    \end{equation*}
+\end{definition}
+
+\begin{definition}
+    Let $f^\bullet:K^\bullet\to L^\bullet$ be a morphism in $\Com(\sA)$. It is called a quasi-isomorphism if it induces an isomorphism of cohomologies. That is $\cH(f^i):\cH(K^i)\to\cH(L^i)$ is an isomorphism for each $i\in\Z$.
+\end{definition}
+
+\begin{definition}
+    Let $\sA$ be an abelian category. We say a category $\cD$ is the derived category of $\sA$ if it satisfies the following axioms.
+    \begin{enumerate}[i. ]
+        \item There is a functor $Q:\Com(\sA)\to \cD$ sending quasi-isomorphisms to isomorphisms.
+        \item The above functor $Q$ is initial. That is for any functor $F:\Com(\sA)\to \mathscr{T}$ which sends quasi-isomorphisms to isomorphisms admits a unique functor (up to natural isomorphisms) $G:\cD\to\mathscr{T}$ such that $F = G\circ Q$.
+    \end{enumerate}
+    Such $\cD$ is denoted by $\cD(\sA)$ for the explicitness.
+\end{definition}
+
+\begin{notation}
+    Similarly, we denote $\cD^+(\sA),\cD^-(\sA),\cD^b(\sA)$ be the derived categories constructed from $\Com^+(\sA),\Com^-(\sA),\Com^b(\sA)$.
+\end{notation}
+
+\begin{theorem}[Verdier]
+    All $\cD(\sA),\cD^\pm(\sA),\cD^b(\sA)$ exist.
+\end{theorem}
+
+\begin{definition}
+    Let $K^\bullet,L^\bullet\in \Com(\sA)$. We say $f^\bullet,g^\bullet:K^\bullet\to L^\bullet$ are homotopic if there exists $h^\bullet:K^\bullet\to L^{\bullet-1}$ such that 
+    \begin{equation*}
+        \forall i\in\Z, f^i - g^i = d_L^{i-1}h^i+h^{i+1}d_K^i.
+    \end{equation*}
+    With abuse of notation, we might write $f-g = dh+hd$. In this case, we write $f^\bullet\sim g^\bullet$.
+\end{definition}
+
+\begin{proposition}
+    If $f^\bullet\sim g^\bullet$ then they induce the same map on cohomologies. That is 
+    \begin{equation*}
+        \cH(f^\bullet) = \cH(g^\bullet):\cH(K^\bullet)\to \cH(L^\bullet).
+    \end{equation*}
+\end{proposition}
+
+\begin{definition}
+    The homotopy category $\cK(\sA)$ of $\sA$ is the category satisfying the following.
+    \begin{enumerate}
+        \item The objects are the same as $\Com(\sA)$, 
+        \item The morphisms are $\Hom_{\Com(\sA)}(K^\bullet,L^\bullet)/\sim$ modulo chain homotopy.
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}
+    As we modded out by homotopy equivalence, $\cK(\sA)$ is no longer abelian. 
+\end{remark}
+
+\begin{notation}
+We define homotopy categories $\cK^+(\sA),\cK^-(\sA),\cK^b(\sA)$ as the ones constructed from $\Com^+(\sA),\Com^-(\sA),\Com^b(\sA)$, respectively.
+\end{notation}
+
+\begin{definition}
+    The shift functor $[1]:\Com(\sA)\to\Com(\sA)$ is a functor such that 
+    \begin{equation*}
+        \Com(\sA)\ni K^\bullet\mapsto K^\bullet[1] \defeq (K^{\bullet+1},-d_K^{i+1}).
+    \end{equation*}
+    The cone functor $C$ is such that given $f:K^\bullet\to L^\bullet$,
+    \begin{equation*}
+        C(f^\bullet)^i = L^i\oplus K^{i+1}
+    \end{equation*}
+    with the differential $d_{C(f)}:L^\bullet\oplus K^{\bullet+1}\to L^{\bullet+1}\oplus K^{\bullet+2}$ given by 
+    \begin{equation*}
+        d_{C(f^\bullet)}=\begin{pmatrix}
+            d_L^\bullet & f^{\bullet+1}\\
+            0 & d_K\circ[1]^\bullet
+        \end{pmatrix}.
+    \end{equation*}
+\end{definition}
+
+\begin{proposition}[Properties of Cones]$\:$
+    \begin{enumerate}
+        \item For any $f^\bullet:K^\bullet\to L^\bullet$, there are natural maps $L^\bullet\stackrel{\alpha^\bullet}{\to} C(f)^\bullet, C(f)^\bullet\stackrel{\beta^\bullet}{\to} K^\bullet[1]$ which are canonical inclusions and projections, respectively.
+        Explicitly, these are 
+        \begin{equation*}
+            L^i\ni x\stackrel{\alpha^i}{\mapsto} (x,0)\in L^i\oplus K^{i+1},\: L^i\oplus K^{i+1}\ni (x,y)\stackrel{\beta^i}{\mapsto} y\in K^{i+1}.
+        \end{equation*} 
+        \item There is a so-called triangle,
+        \begin{equation*}
+            \label{cones_triangle_eq}
+            K^\bullet\stackrel{f^\bullet}{\to} L^\bullet \stackrel{\alpha^\bullet}{\to} C(f^\bullet)\stackrel{\beta^\bullet}{\to} K^\bullet[1]\tag{T}
+        \end{equation*}
+        such that $\alpha^\bullet\circ f^\bullet,\beta^\bullet\circ\alpha^\bullet$ are null-homotopic.
+        \item There is a notable short exact sequence in $\Com(\sA)$ 
+        \begin{equation*}
+            0\to L^\bullet\to C(f^\bullet)\to K^\bullet[1]\to0.
+        \end{equation*}
+        This further gives us a long exact sequence,
+        \begin{equation*}
+            \cdots\to \cH^i(K^\bullet)\to \cH^i(L^\bullet)\to \cH^i(C(f))\to \cH^{i+1}(K^\bullet)\to\cdots
+        \end{equation*}
+        \item Consider $\id_{K^\bullet}:K^\bullet\to K^\bullet$. Then $C(\id_{K^\bullet}) = 0$ in $K(\sA)$ (i.e., $C(\id_{K^\bullet})$ is null-homotopic).
+        \item In \eqref{cones_triangle_eq} above, $C(\alpha^\bullet)\cong K^\bullet[1]$ in $K(\sA)$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    The first assertion is obvious. Note that 
+    \begin{equation*}
+        \alpha\circ f(x) = (f(x),0).
+    \end{equation*}
+    Hence we need $h$ so that 
+    \begin{equation*}
+        dh+hd = (f,0).
+    \end{equation*}
+    Take $h(x) = (0,x)$, then it works.
+    \par\textbf{4.} We need to construct $h^i:C(\id_{K^\bullet})^i\to C(\id_{K^\bullet})^{i-1}$ such that 
+    \begin{equation*}
+        C(\id_{K^\bullet}) = dh+hd.
+    \end{equation*}
+    Set $h^i(x,y) = (0,x)$ then this works.
+    \par\textbf{5.} We need to find $\gamma:C(\alpha^\bullet)\to K^\bullet[1]$ and $\delta:K^\bullet[1]\to C(\alpha^\bullet)$ such that $\delta\gamma\sim\id_{C(\alpha^\bullet)}$ and $\gamma\delta\sim\id_{K^\bullet[1]}$. 
+    We set
+    \begin{align*}
+        &L^i\oplus K^{i+1}\oplus L^{i+1}\ni(x,y,z)\stackrel{\gamma^i}{\mapsto} y\in K^{i+1},\\
+        &K^{i+1}\ni y\stackrel{\delta^i}{\mapsto}(0,y,-f(y))\in L^i\oplus K^{i+1}\oplus L^{i+1}.
+    \end{align*}
+    These morphisms do the job.
+\end{proof}
+
+\subsection{Derived Categories}
+\begin{remark}
+    If $\sA$ is an abelian category with enough injectives, then 
+    \begin{equation*}
+        \mathcal{D}^+(\sA)\cong \cK^+(\mathrm{Inj}(\sA)).
+    \end{equation*}
+    Taking the dual of this notion, if $\sA$ admits enough projectives, we have 
+    \begin{equation*}
+        \mathcal{D}^-(\sA)\cong \cK^-(\mathrm{Proj}(\sA)).
+    \end{equation*}
+    Where $\cK^\pm$ and so is $\cK^b$ are defined similarly in the case of $\cD^\pm,\cD^b$.
+\end{remark}
+
+There is also another way to construct $\cD(\sA)$ using so-called Verdier localization.
+
+\begin{definition}
+    Let $\sC$ be a category. A subclass of morphisms $\mathcal{S}$ is called a multiplicative system for $\sC$ if it satisfies the following conditions.
+    \begin{enumerate}[i. ]
+        \item For any $X\in\sC$, $\id_X\in\mathcal{S}$.
+        \item $\mathcal{S}$ is closed under compositions.
+        \item For any $Z\stackrel{f}{\rightarrow}Y\stackrel{s}{\leftarrow}V$ where $s\in\mathcal{S}$, there is an object $U$ together with morphisms $Z\stackrel{t}{\leftarrow}U\stackrel{g}{\rightarrow}V$ where $t\in\mathcal{S}$ making the following diagram commutes.
+        \begin{center}
+\begin{tikzcd}
+                   & U \arrow[ld, "t"'] \arrow[rd, "g"] &                   \\
+Z \arrow[rd, "f"'] &                                    & V \arrow[ld, "s"] \\
+                   & W                                  &                  
+\end{tikzcd}
+        \end{center}
+        \item If $f,g:X\to Y$ and $s:Y\to Y$ is in $\mathcal{S}$ such that $sf = sg$, then there exists $s':X'\to X$ in $\mathcal{S}$ with $fs' = gs'$.
+    \end{enumerate}
+    A roof/correspondence is a diagram,
+    \begin{center}
+        \begin{tikzcd}
+  & Z \arrow[ld, "s"'] \arrow[rd, "f"] &   \\
+X &                                    & Y
+\end{tikzcd}
+    \end{center}
+    where $X,Y,Z\in\sC$ and $s,f$ are morphisms where $s\in\mathcal{S}$.
+\end{definition}
+
+\begin{definition}
+    Let $\mathcal{S}$ be a multiplicative system of $\sC$, the canonical inclusion $Q:\sC\to \sC[\mathcal{S}^{-1}]$ is called Verdier localization where $\sC[\mathcal{S}^{-1}]$ has the objects same as $\sC$ and morphisms are given by roofs and the composition morphisms is given by the third property.
+\end{definition}
+
+%10/20
+
+\begin{example}
+    The class of quasi-isomorphisms is a multiplicative system.  
+    \begin{center}
+        \begin{tikzcd}
+             & {C(Z\oplus W\stackrel{f\oplus s}\to Y)[-1]} \arrow[ld, dashed] \arrow[rd, dashed] &              \\
+Z \arrow[rd] &                                                                                   & W \arrow[ld] \\
+             & Y                                                                                 &             
+\end{tikzcd}
+    \end{center}
+\end{example}
+
+\begin{theorem}
+    Let $\sT$ be a category with a functor $F:\Com(\sA)\to sT$ sending quasi-isomorphisms to isomorphisms. Then it factors through $\Com(\sA)\to \cK(\sA)\to\cD(\sA)$.
+    \begin{center}
+\begin{tikzcd}
+\Com(\sA) \arrow[d] \arrow[r, "F"]                    & \sT \\
+\cK(\sA) \arrow[d] \arrow[ru, "\overline{F}", dashed] &     \\
+\cD(\sA) \arrow[ruu, "\exists G"', dashed]            &    
+\end{tikzcd}
+    \end{center}
+\end{theorem}
+
+\begin{proof}
+    Let us first say we can construct $\overline{F}:\cK\to \sT$. 
+    \begin{equation*}
+        G(X\stackrel{s}{\leftarrow}Y\stackrel{f}{\rightarrow}) \in \Hom_\sT(\overline{F}(X),\overline{F}(Z))
+    \end{equation*}
+    and $G(X) = \overline{F}(X)$. Since $\overline{F}(s)$ is invertible, we can put 
+    \begin{equation*}
+        G(X\stackrel{s}{\leftarrow}Y\stackrel{f}{\rightarrow}) = \overline{F}(f)\overline{F}(s)^{-1}.
+    \end{equation*}
+    Now we need to extend $F$ to $\overline{F}$. To do so, we need to show that if $f\sim g\in\Hom_{\Com(\sA)}(X,Y)$ then $F(f) = F(g)\in\Hom_\sT(F(X),F(Y))$. 
+    By the assumption, there is $\delta^\bullet:X^\bullet\to Y^{\bullet-1}$ such that $f-g = d\delta +\delta d$. There exists $\mathrm{Cyl}\in\Com(\sA)$ with the following properties.
+    \begin{enumerate}[i.]
+        \item THere are maps in $\Com(\sA)$
+        \begin{center}
+            \begin{tikzcd}
+X^\bullet \arrow[r, "i_0", shift left] \arrow[r, "i_1"', shift right] & \mathrm{Cyl}^\bullet \arrow[r, "r"] & X^\bullet
+\end{tikzcd}
+        \end{center}
+        such that $ri_0 = ri_1 = \id_X$ and $r$ is a quasi-isomorphism.
+        \item We have a morphism $\mathrm{Cyl}\stackrel{h}{\to}Y$ such that $hi_0=f,hi+1 = g$.
+    \end{enumerate}
+    In a diagram, this is 
+    \begin{center}
+        \begin{tikzcd}
+X \arrow[r, "i_0", shift left] \arrow[r, "i_1"', shift right] \arrow[rd, "f", shift left] \arrow[rd, "g"', shift right] & \mathrm{Cyl} \arrow[r, "r"] \arrow[d, "h"] & X \\
+                                                                                                                        & Y                                          &  
+\end{tikzcd}
+    \end{center}
+    By the assumption,
+    \begin{equation*}
+        F(r)F(i_0) = F(r)F(i_1)\Rightarrow F(i_0)=F(i_1).
+    \end{equation*}
+    Hence 
+    \begin{equation*}
+        F(f) = F(h)F(i_0) = F(h)F(i_1) = F(g).
+    \end{equation*}
+    It still remains to construct $\mathrm{Cyl}$. Consider the following.
+    \begin{equation*}
+        \mathrm{Cyl}^n = X^n\oplus X^n\oplus X^{n+1},d_{\mathrm{Cyl}}(x,y,z) = (dx+z,dy-z,-dz).
+    \end{equation*}
+    It can be easily checked that $d_\mathrm{Cyl}\circ d_\mathrm{Cyl} = 0$. Set morphisms to be 
+    \begin{align*}
+        X^n\ni x&\stackrel{i_0}{\mapsto}(x,0,0) \in\mathrm{Cyl},\\
+        X^n\ni y&\stackrel{i_1}{\mapsto}(0,y,0) \in\mathrm{Cyl},\\
+        \mathrm{Cyl}^n\ni (x,y,z)&\stackrel{r}{\mapsto} x+y\in \mathrm{Cyl},\\
+        \mathrm{Cyl}^n\ni (x,y,z)&\stackrel{h^n}{\mapsto}f^n(x)+g^n(y)+\delta^{n+1}(z).
+    \end{align*}
+    We will now show that such $r$ is indeed a quasi-isomorphism. Observe that we have short exact sequences,
+    \begin{align*}
+        0\to C(-d_X)^n\to\mathrm{Cyl}^n\stackrel{r^n}{\to}X^n\to0,\\
+        0\to X^\oplus X^{n+1}\to X^n\oplus X^n\oplus X^{n+1}\to X^n\to0.
+    \end{align*}
+    This gives a rise to a long exact sequence,
+    \begin{equation*}
+        \cdots\to \cH^i(\Com(-d_X))\to\cH^i(\mathrm{Cyl})\to\cH^i(X)\to \cdots
+    \end{equation*}
+    And $\cH^i(\Com(-d_X))=$ for all $i$. Now we need to show that $h$ is a map of chain complexes. That is, we need to show that
+    \begin{center}
+        \begin{tikzcd}
+X^n\oplus X^n\oplus X^{n+1} \arrow[d, "d_\mathrm{Cyl}"'] \arrow[r, "h^n"] & Y^n \arrow[d, "d_Y"] \\
+X^{n+1}\oplus X^{n+1}\oplus X^{n+2} \arrow[r, "h^{n+1}"']                 & Y^{n+1}             
+\end{tikzcd}
+    \end{center}
+    is a commutatiev diagram. This can be checked from the definition substituting $x,y\in X^n$ and $z\in X^{n+1}$.
+\end{proof}
+
+\begin{definition}
+    Given a category $\sT$ with an autoequivalnce $[1]:\sT\to\sT$, a triangle is a sequence 
+    \begin{equation*}
+        X\to Y\to Z\to X[1].
+    \end{equation*}
+\end{definition}
+
+\begin{definition}
+    For an additive category with an autoequivalence $[1]:\sT\to\sT$, we say $\sT$ is triangulated if it has a class of exact/distinguished triangles satisfying the following axioms.
+    \begin{enumerate}[TR1.]
+        \item For any $X\in\sT$, $X\stackrel{\id_X}{\to}X\to 0\to X[1]$ is exact. Furthermore, for any $f:X\to Y$ in $\sT$, there is an exact triangle $X\stackrel{f}{\to}Y\to Z\to X[1]$.
+        \item For a triangle $X\to Y\stackrel{g}{\to}Z\stackrel{h}{\to}X[1]$ is exact if and only if $Y\stackrel{g}{\to}Z\stackrel{h}{\to}X[1]\stackrel{f[1]}{\to}Y[1]$ is exact.
+        \item Given two exact triangles and maps $\alpha,\beta$ into a commutative diagram, there is $\gamma$ such that the following diagram commutes.
+        \begin{center}
+            \begin{tikzcd}
+X \arrow[d, "f"] \arrow[r] & Y \arrow[d, "g"] \arrow[r] & Z \arrow[d, "\exists\gamma", dashed] \arrow[r] & {X[1]} \arrow[d, "{\alpha[1]}"] \\
+X' \arrow[r]               & Y' \arrow[r]               & Z' \arrow[r]                                   & {X'[1]}                        
+\end{tikzcd}
+        \end{center}
+        \item Gien $X\stackrel{\alpha}{\to}Y\stackrel{\beta}{\to}\overline{Z}$, there is an exact triangle with terms $C(\alpha),C(\beta),C(\gamma)$ making the following diagram commutes.
+        \begin{center}
+            \begin{tikzcd}
+X \arrow[r, "\alpha"] \arrow[rd, "\beta\circ\alpha"'] & Y \arrow[r] \arrow[d, "\beta"] & C(\alpha) \arrow[d] \arrow[r] & \cdots \\
+                                                      & Z \arrow[r] \arrow[rd]         & C(\beta) \arrow[d] \arrow[r]  & \cdots \\
+                                                      &                                & C(\gamma) \arrow[r] \arrow[d] & \cdots \\
+                                                      &                                & \vdots                        &       
+\end{tikzcd}
+        \end{center}
+    \end{enumerate}
+\end{definition}
+
+\begin{theorem}
+    Let $\sA$ be an abelian category then $\cK(\sA),\cD(\sA)$ are triangulated.
+\end{theorem}
+
+\begin{proof}
+    Let us first start with $\cK(\sA)$. We already have defined the shift functor $[1]$. A triangle $X\to Y\to Z\to X[1]$ is exact if there is $f:A\to B$ and an isomorphism $X\stackrel{\sim}{\to}A$ and other morphisms making the diagram below commutes.
+    \begin{center}
+\begin{tikzcd}
+X \arrow[r] \arrow[d, "\sim"] & Y \arrow[r] \arrow[d, "\sim"] & Z \arrow[r] \arrow[d, "\sim"] & {X[1]} \arrow[d, "\sim"] \\
+A \arrow[r, "f"']             & B \arrow[r, "g"']             & C(f) \arrow[r, "h"']          & {A[1]}                  
+\end{tikzcd}
+    \end{center}
+    We already have seen that TR1 as $C(\id_X)\sim 0$. TR2 follows from $C(g)\cong A[1]$ in $\cK(\sA)$. For TR3, it reduces to triangle involving cones, 
+    \begin{center}
+        \begin{tikzcd}
+X \arrow[r, "f"] \arrow[d, "\alpha"] & Y \arrow[r, "{y\mapsto (y,0)}"] \arrow[d, "\beta"] & C(f) \arrow[r] \arrow[d, "\gamma", dashed] & {X[1]} \arrow[d, "{\alpha[1]}"] \\
+X' \arrow[r, "f'"']                  & Y' \arrow[r, "{\beta y\mapsto(\beta y,0)}"']       & C(f') \arrow[r]                            & {X'[1]}                        
+\end{tikzcd}
+    \end{center}
+    We have that $\beta f = f'\alpha = dh+hd$. Hence set,
+    \begin{equation*}
+        \gamma(x,y) = (\beta y+hx,\alpha x).
+    \end{equation*}
+    We need to check that $\gamma$ is a map of chain complexes. 
+    \begin{equation*}
+        \gamma\circ d_{C(f)}(y,x) = d_{C(f')}\gamma(y,x) = d_{C(f')}(d\beta y+dhx+f\alpha x,-d\alpha x).
+    \end{equation*}
+    And 
+    \begin{equation*}
+        \gamma d_{C(f)}(y,x) = \gamma(dy+fx,-dx) = (\beta dy+\beta fx-hdx,-\alpha hx).
+    \end{equation*}
+    For $\cD(\sA)$, recall that the functor $Q:\cK(\sA)\to \cD(\sA)$ and $[1]$ shift of complexes. Given exact triangles,
+    \begin{center}
+        \begin{tikzcd}
+X \arrow[r] \arrow[d, "\sim"] & Y \arrow[r] \arrow[d, "\sim"] & Z \arrow[r] \arrow[d, "\sim"] & {X[1]} \arrow[d, "\sim"] \\
+Q(A) \arrow[r]                & Q(B) \arrow[r]                & Q(C) \arrow[r]                & {Q(A[1])}               
+\end{tikzcd}
+    \end{center}
+    where $A\to B\to C\to A[1]$ is exact in $\cK(\sA)$.
+\end{proof}
+\begin{proposition}
+    Let $\sT$ be a triangulated category and 
+    \begin{equation*}
+        A\stackrel{\alpha}{\to}B\stackrel{\beta}{\to}C\stackrel{\gamma}{\to} A[1]
+    \end{equation*} 
+    be an exact triangle. We have the following statements about such triangle.
+    \begin{enumerate}[1.]
+        \item $\beta\circ\alpha = 0$.
+        \item If $B\stackrel{f}{\to}X$ is such that $f\alpha = 0$ then there is $C\stackrel{g}{\to}X$ such that $f=g\beta$.
+        \item If $X\in\sT$, then $\Hom(\cdot,X)$ gives a long exact sequence,
+        \begin{equation*}
+            \cdots\Hom(C,X)\to\Hom(B,X)\to\Hom(A,X)\to\cdots
+        \end{equation*}
+        \item $\alpha$ is an isomorphism if and only if $C\cong 0$.
+        \item $\alpha$ is zero if and only if $C\cong B\oplus A[1]$.
+        \item For the diagram of two exact triangles below,
+        \begin{center}
+            \begin{tikzcd}
+A \arrow[r] \arrow[d, "f"] & B \arrow[r] \arrow[d, "g"] & C \arrow[r] \arrow[d, "h"] & {A[1]} \arrow[d] \\
+A' \arrow[r]               & B' \arrow[r]               & C' \arrow[r]               & {A'[1]}         
+\end{tikzcd}
+        \end{center}
+        If two of $f,g,h$ are isomorphisms then so are all the other vertical arrows.
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}$\:$
+    \par\textbf{1.} Using TR3,
+    \begin{center}
+        \begin{tikzcd}
+A \arrow[r, "\alpha"]                & B \arrow[r, "\beta"]            & C \arrow[r]                             & {A[1]}                  \\
+A \arrow[u, "\id"] \arrow[r, "\id"'] & A \arrow[u, "\alpha"] \arrow[r] & 0 \arrow[r] \arrow[u, "\gamma", dashed] & {A[1]} \arrow[u, "\id"]
+\end{tikzcd}
+    \end{center}
+    Hence $\beta\circ\alpha = \gamma=0$.
+    \par\textbf{2.}
+    \begin{center}
+\begin{tikzcd}
+A \arrow[r, "\alpha"] \arrow[d] & B \arrow[d, "f"] \arrow[r, "\beta"] & C \arrow[r, "\gamma"] \arrow[d, "g", dashed] & {A[1]} \arrow[d] \\
+0 \arrow[r]                     & X \arrow[r, "\id_X"']                 & X \arrow[r]                                  & 0               
+\end{tikzcd}
+    \end{center}
+    \par\textbf{3.} It suffices to check the exactness at 
+    \begin{equation*}
+        \cdots\to\underbrace{\Hom(C,X)}_{\ni g}\stackrel{\Phi}{\to}\underbrace{\Hom(B,X)}_{\ni g\circ\beta}\stackrel{\Psi}{\to}\underbrace{\Hom(A,X)}_{\ni g\circ\beta\circ\alpha}\to\cdots
+    \end{equation*}
+    Clearly $\Psi\Phi = 0$ by \textbf{1}. If $f\in\Ker\Psi$ hence $f\alpha=0$ by construction. Using \textbf{2}, $f=g\beta$ for some $g\in \Hom(C,X)$ hence $f\in\image\Phi$.
+    \par\textbf{4.} $\alpha$ is an isomorphism if and only if $\Psi$ is an isomorphism for any $X\in\sT$, if and only if $\Hom(C,X)=0$. By the uniqueness of initial object, $C=0$.
+    \par\textbf{5.} 
+    \begin{center}
+        \begin{tikzcd}
+A \arrow[r, "0"] \arrow[d] & B \arrow[d, "\id_B"] \arrow[r, "\beta"] & C \arrow[r, "\gamma"] \arrow[d, "\delta", dashed] & {A[1]} \arrow[d] \\
+0 \arrow[r]                & B \arrow[r, "\id_B"']                   & B \arrow[r]                                       & 0               
+\end{tikzcd}
+    \end{center}
+    Hence $\delta:C\to B$ admits a section $\beta$.
+    \par\textbf{6.} Five lemma applied to the long exact sequence in \textbf{3}.
+\end{proof}
+
+%10/26
+
+\begin{definition}
+    Let $\sA$ be an abelian category, we denot $\cH^i(\cdot):\cD(\sA)\to \sA$ to be the $i$-th cohomology of complex $X_\bullet\in\cD(\sA)$.
+\end{definition}
+
+\begin{proposition}
+    \label{proposition_5_1}
+    Suppose we have an exact triangle in $\cD(\sA)$,
+    \begin{equation*}
+        0\to A\to B\to C\to A[1].
+    \end{equation*}
+    Then this gives a long exact sequence in $\sA$,
+    \begin{equation*}
+        \cdots\to\cH^i(A)\to\cH^i(B)\to\cH^i(C)\to\cdots
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    We may assume the triangle is 
+    \begin{equation*}
+        A\stackrel{f}{\to}B\to C(f)\to A[1].
+    \end{equation*}
+    Actually, there is a short exact sequence in $\Com(\sA)$ such that 
+    \begin{equation*}
+        0\to B\to C(f)\to A[1]\to 0.
+    \end{equation*}
+\end{proof}
+
+\begin{remark}
+    We have a canonical inclusion 
+    \begin{equation*}
+        \sA\ni X\mapsto (\cdots\to 0\to X\to 0\to\cdots)\in\cD(\sA).
+    \end{equation*}
+    This is fully faithful. Furthermore,
+    \begin{equation*}
+        \mathrm{Ext}_\sA^n(X,Y)\cong \Hom_{\cD(\sA)}(X,Y[n]).
+    \end{equation*}
+    Given a short exact sequence,
+    \begin{equation*}
+        0\to A\to B\to C\to 0
+    \end{equation*}
+    in $\sA$, this becomes an exact triangle,
+    \begin{equation*}
+        0\to A\to B\to C\to A[1]
+    \end{equation*}
+    in $\cD(\sA)$ where $C\cong C(f)$.
+\end{remark}
+
+\begin{definition}
+    An exact functor $\Phi:\sT\to\sT'$ between triangulated categories is such that 
+    \begin{enumerate}[i.]
+        \item $\Phi\circ[1]_{\sT}\cong [1]_{\sT'}\circ\Phi$.
+        \item Given an exact triangle in $\sT$,
+        \begin{equation*}
+            A\to B\to C\to A[1],
+        \end{equation*}
+        then 
+        \begin{equation*}
+            \Phi A\to\Phi B\to \Phi C\to \Phi A[1]
+        \end{equation*}
+        is also exact.
+    \end{enumerate}
+\end{definition}
+
+Let $F:\sA\to\sB$ be a left exact functor between Abelian categories. We would like to construct an exact functor $RF:\cD^+(\sA)\to\cD^+(\sA)$. 
+To do so, we require that $F$ sends quasi-isomorphisms to quasi-isomorphisms, or alternatively $F$ sends acyclic complexes to acyclic complexes.
+
+The idea is to use $K^+(\mathscr{I})$ instead of $K^+(\sA)$ where $\mathscr{I}\subseteq\sA$ is an additive subcategory.
+
+\begin{definition}
+    For a left exact functor $F:\sA\to \sB$, we say an additive subcategory $\mathscr{I}\subseteq\sA$ of an abelian category $F$-adopted if 
+    \begin{enumerate}
+        \item $\forall X\in\sA$, there is $J\in \mathscr{I}$ such that $X\hookrightarrow J$. (Sometimes it is used as $\forall X\in\sA,\exists J^\bullet\in\Com^+(\sI)$ with $X\to J^\bullet$ a quasi-isomorphism) and 
+        \begin{equation*}
+            X\stackrel{s^0}{\hookrightarrow} J^0\twoheadrightarrow\coker(s^0)\stackrel{s^1}{\hookrightarrow} J^1\twoheadrightarrow\coker(s^1)\hookrightarrow J^2\to\cdots
+        \end{equation*}
+        \item If $J^\bullet\in\Com^+(\sI)$ is acyclic then $F(J^\bullet)$ is also acyclic.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    Given a $F$-adopted class $\sI$, we define,
+\begin{center}
+\begin{tikzcd}
+\cD^+(\sA) \arrow[rd, "RF"] \arrow[d, "\cong"']        &                                                         \\
+{\cK^+(\sI)[\text{q-iso}^{-1}]} \arrow[r] & {\cD^+(\sB)=\cK^+(\sB)[\text{q-iso}^{-1}]} \\
+\cK^+(\sI) \arrow[r, "F"'] \arrow[u]                   & \cK^+(\sB) \arrow[u]                                   
+\end{tikzcd}
+\end{center}
+\end{definition}
+
+\begin{remark}
+    When searching for a $F$-adopted class, we may consider the category of $F$-acyclic complexes.
+\end{remark}
+
+\begin{proposition}
+    If $\sA$ is an abelian category with enough injective. The additive subcategory $\mathrm{Inj}(\sA)$ of injective objects of $\sA$ is $F$-adopted for any left exact functor $F$.
+\end{proposition}
+\begin{proof}
+    Given $I^\bullet = I^0\stackrel{d^0}{\to}I^1\to\cdots$ acyclic, we need to show that $F(I^\bullet)$ is acyclic. Set $J^i = \image (d^i) = \ker(d^{i+1})$. We have 
+    \begin{align*}
+        0\to I^0\stackrel{d^0}{\to}&I^1\stackrel{d^1}{\to}J^1\to0\\
+        0\to J^1\stackrel{d^1}{\to}&I^2\stackrel{d^2}{\to}J^2\to0\\
+        0\to I^2\stackrel{d^2}{\to}&I^3\stackrel{d^3}{\to}J^3\to0\\
+        &\vdots
+    \end{align*}
+    In the first sequence, as $I^0$ is injective hence the sequence splits and $I^1= I^0\oplus J^1$ hence $J^1$ is also injective. Proceed inductively, we see $I^i = J^{i-1}\oplus J^i$. Hence we obtain a long exact sequence,
+    \begin{equation*}
+        0\to I^0\to I^0\oplus J^1\to J^2\to J^2\oplus J^3\to\cdots.
+    \end{equation*}
+    Using the additivity of $F$, we obtain,
+     \begin{equation*}
+        0\to F(I^0)\to F(I^0)\oplus F(J^1)\to F(J^2)\to F(J^2)\oplus F(J^3)\to\cdots.
+    \end{equation*}
+    Hence $F(I^\bullet)$ is acyclic.
+\end{proof}
+
+\begin{definition}
+    For a right exact functor $G:\sA\to \sB$, $G$-adopted class is a subclass $\mathscr{H}\subseteq\sA$ satisfying the following conditions.
+    \begin{enumerate}[i.]
+        \item For any $X\in \sA$, there is $H\in\mathscr{H}$ with $H\twoheadrightarrow X$.
+        \item $G$ sends an acyclic complexes in $\mathscr{H}$ to acyclic complexes in $\Com^+(\sB)$.
+    \end{enumerate}
+\end{definition}
+
+\begin{proposition}
+    If $\sA$ has enough projectives then $\mathrm{Proj}(\sA)$ is $G$-adopted for every right exact functor $G$ from $\sA$.
+\end{proposition}
+
+\begin{proposition}
+    Let $\sA\stackrel{F}{\to}\sB\stackrel{G}{\to}\sC$ such that $F,G$ are left-exact. Suppose that $F,G,GF$-adopted classes. Then there is a natural transformation
+    \begin{equation*}
+        R(GF)\stackrel{\:}{\to}RG\circ RF.
+    \end{equation*}
+\end{proposition}
+
+\begin{proposition}
+    Let $\sA\stackrel{F}{\to}\sB\stackrel{G}{\to}\sC$ such that $F,G$ are left-exact. Suppose that $F,G,GF$-adopted classes. 
+    Suppose $\sA,\sB$ both have enough injectives and $F:\sA\to\sB$ sends injectives to $G$-acyclic objects then there is a natural isomorphism,
+    \begin{equation*}
+        R(GF)\stackrel{\sim}{\to}RG\circ RF.
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    For $X\in\sA,$ let $X\to I^\bullet$ be a quasi-isomorphism where $I^\bullet$ is a complex of injectives then $RF(X) = F(I^\bullet)$. Hence 
+    \begin{equation*}
+        R(GF)(X)\to RG\circ RF(X)\leadsto (GF)(I^\bullet) \to RG\circ F(I^\bullet).
+    \end{equation*}
+    Hence it suffices to show that $R(GF)(X)=G\circ F(I^\bullet)$. Let $Y^\bullet = F(I^\bullet)\in\cD^+(\sB)$ then there is $Y\to J^\bullet $ which is a quasi-isomorphism with $J^\bullet$ complex of injectives. Hence $RG(Y^\bullet) = G(J^\bullet)$. 
+    We use $G$-acyclic complexes as the $G$-adopted class in $\sB$. Then $F(I^\bullet)$ is $G$-acyclic hence the desired equality is obtained.
+\end{proof}
+
+\begin{thebibliography}{9}
+\bibitem{Achar}
+Pramod N. Achar, \emph{Perverse Sheaves and Applications to Representation Theory}, AMS, 2021.
+\bibitem{Cataldo}
+Mark Andrea A. de Cataldo, Luca Migliorini, \emph{The Decomposition Theorem, Perverse Sheaves and the Topology of Algebraic Maps}.
+\end{thebibliography}
+\end{document}

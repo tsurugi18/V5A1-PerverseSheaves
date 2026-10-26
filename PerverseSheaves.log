@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=latex 2025.10.19)  17 OCT 2026 04:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=latex 2025.10.19)  26 OCT 2026 09:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/tsurugi/Desktop/Universities/UniBonn/Semester5/V5DA1-PerverseSheaves/Notes/PerverseSheaevs.tex
-(/Users/tsurugi/Desktop/Universities/UniBonn/Semester5/V5DA1-PerverseSheaves/Notes/PerverseSheaevs.tex
+**/Users/tsurugi/Desktop/Universities/UniBonn/Semester5/V5DA1-PerverseSheaves/Notes/PerverseSheaves.tex
+(/Users/tsurugi/Desktop/Universities/UniBonn/Semester5/V5DA1-PerverseSheaves/Notes/PerverseSheaves.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
 (/usr/local/texlive/2025/texmf-dist/tex/latex/base/article.cls
@@ -30,8 +30,18 @@ Package: extsizes 1996/10/08 v1.0 Non Standard LaTeX Package
 Package ExtSizes Warning: It is better to use one of the extsizes classes,
  if you can.
 
-(/usr/local/texlive/2025/texmf-dist/tex/latex/extsizes/size8.clo
-File: size8.clo 1999/11/11 v1.4a NON-Standard LaTeX file (size option)
+(/usr/local/texlive/2025/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2024/06/29 v1.4n Standard LaTeX file (size option)
+LaTeX Info: Command `\normalsize' is already robust on input line 56.
+LaTeX Info: Redefining \small on input line 58.
+LaTeX Info: Redefining \footnotesize on input line 69.
+LaTeX Info: Redefining \scriptsize on input line 80.
+LaTeX Info: Redefining \tiny on input line 81.
+LaTeX Info: Redefining \large on input line 82.
+LaTeX Info: Redefining \Large on input line 83.
+LaTeX Info: Redefining \LARGE on input line 84.
+LaTeX Info: Redefining \huge on input line 85.
+LaTeX Info: Redefining \Huge on input line 86.
 )) (/usr/local/texlive/2025/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2024/11/05 v2.17t AMS math features
 \@mathmargin=\skip51
@@ -478,36 +488,36 @@ File: pgflibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \c@fact=\count325
 \c@example=\count326
 \c@claim=\count327
- (./PerverseSheaevs.aux)
-\openout1 = `PerverseSheaevs.aux'.
+ (./PerverseSheaves.aux)
+\openout1 = `PerverseSheaves.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 178.
-LaTeX Font Info:    ... okay on input line 178.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 178.
-LaTeX Font Info:    ... okay on input line 178.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 178.
-LaTeX Font Info:    ... okay on input line 178.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 178.
-LaTeX Font Info:    ... okay on input line 178.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 178.
-LaTeX Font Info:    ... okay on input line 178.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 178.
-LaTeX Font Info:    ... okay on input line 178.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 178.
-LaTeX Font Info:    ... okay on input line 178.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 179.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 183.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 179.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 183.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 179.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 183.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for U+stmry on input line 179.
+LaTeX Font Info:    Trying to load font information for U+stmry on input line 183.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
 
 [1
@@ -522,19 +532,31 @@ LaTeX Font Info:    Trying to load font information for U+stmry on input line 17
 
 [5]
 
-[6] (./PerverseSheaevs.aux)
+[6]
+
+[7]
+
+[8]
+
+[9]
+
+[10]
+
+[11]
+
+[12] (./PerverseSheaves.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 17430 strings out of 473191
- 362980 string characters out of 5715825
- 843756 words of memory out of 5000000
- 40358 multiletter control sequences out of 15000+600000
- 568053 words of font info for 74 fonts, out of 8000000 for 9000
+ 18424 strings out of 473191
+ 388095 string characters out of 5715825
+ 871261 words of memory out of 5000000
+ 41351 multiletter control sequences out of 15000+600000
+ 569957 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 116i,14n,121p,563b,1053s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 116i,16n,121p,563b,1152s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on PerverseSheaevs.dvi (6 pages, 46304 bytes).
+Output written on PerverseSheaves.dvi (12 pages, 152984 bytes).
